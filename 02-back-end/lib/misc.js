@@ -1,8 +1,8 @@
+/* eslint-disable no-useless-escape */
 const bunyan = require('bunyan');
 
-// eslint-disable-next-line no-useless-escape
 const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+const phoneRegExp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 /**
  * Email validation
  * @param email
@@ -57,6 +57,7 @@ const logError = (req, err) => {
 module.exports = {
   validateEmail,
   emailRegExp,
+  phoneRegExp,
   customShortId,
   logError,
   isValidId,
