@@ -4,6 +4,7 @@ import { useSetRecoilState } from 'recoil';
 import { SessionService } from '../services';
 import { authStore } from '../stores/authStore';
 import { useSignIn } from '../hooks/user';
+import { toast } from 'react-toastify';
 
 export interface ISignIn {
   email: string;
@@ -38,8 +39,8 @@ const SignIn = () => {
           setSession(() => data.results);
           navigate('/home');
         },
-        onError(err) {
-          alert(err);
+        onError(error) {
+          toast.error(error.message);
         },
       }
     );
