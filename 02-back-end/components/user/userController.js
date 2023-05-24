@@ -14,13 +14,7 @@ module.exports.signIn = async (req, res) => {
     throw new Error(error.MISSING_PARAMETERS);
   }
 
-  const user = await User.findOne(
-    { email: email.toLowerCase() },
-    {
-      password: 1,
-      isActive: 1,
-    }
-  ).lean();
+  const user = await User.findOne({ email: email.toLowerCase() }).select('+password').lean();
 
   if (!user) {
     throw new Error(error.NOT_FOUND);
@@ -40,6 +34,28 @@ module.exports.signIn = async (req, res) => {
     message: 'Successfully signed in',
     token: issueNewToken(user),
     results: user,
+  });
+};
+
+module.exports.signUp = async (req, res) => {
+  const { name, email, password, phone, gender, address } = req.body;
+
+  if (!name || !email || !password || !phone || !gender || !address) {
+    throw new Error(error.MISSING_PARAMETERS);
+  }
+
+  await User.create({
+    name,
+    email,
+    password,
+    phone,
+    gender,
+    address,
+    role: 'Patient',
+  });
+
+  return res.status(200).send({
+    message: 'Successfully signed up',
   });
 };
 

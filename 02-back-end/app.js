@@ -40,7 +40,7 @@ app.use(lusca.xssProtection(true));
 // Whitelisted routes
 app.use(
   expressjwt({ secret: environments.JWT_SECRET, algorithms: ['HS256'] }).unless({
-    path: ['/api/v1/user/signin', '/api/v1/user/refresh-token', '/api/v1/user/forgot-password', /\/apidoc\/?/],
+    path: ['/api/v1/user/signin', '/api/v1/user/signup', '/api/v1/user/refresh-token', '/api/v1/user/forgot-password', /\/apidoc\/?/],
   })
 );
 
@@ -55,7 +55,7 @@ mongoose.connection.on('connected', () => {
 
 // CONNECTION EVENTS
 // If the connection throws an error
-mongoose.connection.on('error', err => {
+mongoose.connection.on('error', (err) => {
   console.log(`Mongoose default connection error: ${err}`);
 });
 

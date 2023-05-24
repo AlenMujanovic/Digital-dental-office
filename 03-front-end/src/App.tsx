@@ -1,7 +1,18 @@
+import { Routes, Route } from 'react-router-dom';
 import './styles/index.css';
+import { AuthGuard } from './components';
+import { NotFound, SignIn, Home } from './pages';
 
-function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
-}
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<SignIn />} />
+      <Route element={<AuthGuard />}>
+        <Route path="/home" element={<Home />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
 
 export default App;
