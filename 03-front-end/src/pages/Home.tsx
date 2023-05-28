@@ -1,9 +1,17 @@
-const Home = () => (
-  <div className="container">
+import { AboutSection, ContactUs, Hero, InfoCards, OurServices, OurTeam, TestimonialSection } from '../components';
+
+const Home = () => {
+  return (
     <div className="p-4">
-      <h1 className="text-sm">Hello Digital dental office</h1>
+      <Hero />
+      <InfoCards />
+      <OurServices />
+      <AboutSection />
+      <TestimonialSection />
+      <OurTeam />
+      <ContactUs />
     </div>
-  </div>
-);
+  );
+};
 
 export default Home;
