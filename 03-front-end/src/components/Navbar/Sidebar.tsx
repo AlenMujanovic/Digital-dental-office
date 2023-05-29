@@ -1,4 +1,3 @@
-import { Button } from '..';
 import SidebarLinks from './SidebarLinks';
 import flouride from '../../assets/flouride.png';
 import { Link } from 'react-router-dom';
