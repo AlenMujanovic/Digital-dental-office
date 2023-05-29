@@ -22,7 +22,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (SessionService.isSessionValid()) {
-      navigate('/home');
+      navigate('/');
     }
   }, [navigate, setSession]);
 
@@ -37,7 +37,7 @@ const SignIn = () => {
         onSuccess(data) {
           SessionService.saveSession(data.results, data.token);
           setSession(() => data.results);
-          navigate('/home');
+          navigate('/');
         },
         onError(error) {
           toast.error(error.message);
