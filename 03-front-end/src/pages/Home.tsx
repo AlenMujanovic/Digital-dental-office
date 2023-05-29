@@ -2,7 +2,7 @@ import { AboutSection, ContactUs, Hero, InfoCards, OurServices, OurTeam, Testimo
 
 const Home = () => {
   return (
-    <div className="p-4">
+    <div>
       <Hero />
       <InfoCards />
       <OurServices />

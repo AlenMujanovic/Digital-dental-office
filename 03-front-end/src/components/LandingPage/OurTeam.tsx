@@ -2,12 +2,12 @@ import doctor from '../../assets/doctor.png';
 
 const OurTeam = () => {
   return (
-    <section className="pt-20 pb-10 lg:pt-[50px] lg:pb-20">
+    <section className="p-4 pt-20 pb-10 lg:pt-[50px] lg:pb-20">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
-              <span className="mb-2 block text-xl font-semibold text-primary">Our Doctors</span>
+              <span className="mb-5 block text-xl font-semibold text-primary text-[#1cc7c1]">Our Doctors</span>
             </div>
           </div>
         </div>

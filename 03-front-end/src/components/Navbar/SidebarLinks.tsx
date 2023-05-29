@@ -1,33 +1,52 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const SidebarLinks = () => {
+interface SidebarLinksProps {
+  scrollToSection(sectionId: string): void;
+}
+
+const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
   return (
     <ul>
       <li className="mb-1">
-        <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="#">
+        <NavLink
+          className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+          to="#"
+          onClick={() => scrollToSection('#home')}>
           Home
-        </Link>
+        </NavLink>
       </li>
       <ul>
         <li className="mb-1">
-          <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="#">
-            About
-          </Link>
-        </li>
-        <li className="mb-1">
-          <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="#">
+          <NavLink
+            className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+            to="#"
+            onClick={() => scrollToSection('#services')}>
             Services
-          </Link>
+          </NavLink>
         </li>
         <li className="mb-1">
-          <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="#">
+          <NavLink
+            className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+            to="#"
+            onClick={() => scrollToSection('#about')}>
+            About
+          </NavLink>
+        </li>
+        <li className="mb-1">
+          <NavLink
+            className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+            to="#"
+            onClick={() => scrollToSection('#reviews')}>
             Reviews
-          </Link>
+          </NavLink>
         </li>
         <li className="mb-1">
-          <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="#">
+          <NavLink
+            className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+            to="#"
+            onClick={() => scrollToSection('#contact')}>
             Contact
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </ul>

@@ -1,17 +1,19 @@
 import john from '../../assets/john.png';
 import ema from '../../assets/ema.png';
 import watson from '../../assets/watson.png';
+import message from '../../assets/message.png';
 
 const TestimonialSection = () => {
   return (
-    <section className="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
+    <section id="reviews" className="p-4 pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
-          <div className="w-full px-4">
+          <div className="w-full px-4 flex flex-row justify-between">
             <div className="mb-12 max-w-[510px] lg:mb-10">
-              <span className="mb-2 block text-lg font-semibold text-primary">TESTIMONIAL</span>
+              <span className="mb-5 block text-lg font-semibold text-primary text-[#1cc7c1]">TESTIMONIAL</span>
               <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">What's Our Patients Says</h2>
             </div>
+            <img src={message} alt="message" className="h-28" />
           </div>
         </div>
         <div className="-mx-4 flex flex-wrap">
