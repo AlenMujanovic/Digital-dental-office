@@ -1,11 +1,11 @@
-import { useState, useEffect, FormEvent } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { SessionService } from '../services';
 import { authStore } from '../stores/authStore';
 import { useSignIn } from '../hooks/user';
 import { toast } from 'react-toastify';
-import { Button, Input, Navbar } from '../components';
+import { Button, Input, LoadingSpinner, Navbar } from '../components';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 export interface ISignIn {
@@ -16,9 +16,8 @@ export interface ISignIn {
 const SignIn = () => {
   const navigate = useNavigate();
   const setSession = useSetRecoilState(authStore);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { mutate: loginUser } = useSignIn();
+  const { mutate: loginUser, isLoading } = useSignIn();
 
   const { register, handleSubmit } = useForm<FieldValues>({
     defaultValues: {
@@ -34,8 +33,6 @@ const SignIn = () => {
   }, [navigate, setSession]);
 
   const onSubmit: SubmitHandler<FieldValues> = ({ email, password }) => {
-    setIsLoading(() => true);
-
     loginUser(
       { email, password },
       {
@@ -49,9 +46,12 @@ const SignIn = () => {
         },
       }
     );
-
-    setIsLoading(() => false);
   };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <>
       <Navbar />
