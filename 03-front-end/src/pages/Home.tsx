@@ -1,16 +1,20 @@
-import { AboutSection, ContactUs, Hero, InfoCards, OurServices, OurTeam, TestimonialSection } from '../components';
+import { AboutSection, ContactUs, Footer, Hero, InfoCards, Navbar, OurServices, OurTeam, TestimonialSection } from '../components';
 
 const Home = () => {
   return (
-    <div>
-      <Hero />
-      <InfoCards />
-      <OurServices />
-      <AboutSection />
-      <TestimonialSection />
-      <OurTeam />
-      <ContactUs />
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <InfoCards />
+        <OurServices />
+        <AboutSection />
+        <TestimonialSection />
+        <OurTeam />
+        <ContactUs />
+      </main>
+      <Footer />
+    </>
   );
 };
 

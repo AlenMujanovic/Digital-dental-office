@@ -1,13 +1,14 @@
-import { Button } from '..';
 import SidebarLinks from './SidebarLinks';
 import flouride from '../../assets/flouride.png';
 import { Link } from 'react-router-dom';
 interface SidebarProps {
   onClose: () => void;
   scrollToSection(sectionId: string): void;
+  handleSignOut: () => void;
+  isSessionValid: boolean | undefined;
 }
 
-const Sidebar = ({ onClose, scrollToSection }: SidebarProps) => {
+const Sidebar = ({ onClose, scrollToSection, handleSignOut, isSessionValid }: SidebarProps) => {
   return (
     <>
       <div className="navbar-backdrop fixed inset-0  opacity-25" onClick={onClose} />
@@ -32,11 +33,19 @@ const Sidebar = ({ onClose, scrollToSection }: SidebarProps) => {
         </div>
         <div className="mt-auto">
           <div className="pt-6">
-            <Link
-              className="py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-lg w-full block text-center mb-1"
-              to="/signIn">
-              Sign In
-            </Link>
+            {isSessionValid ? (
+              <button
+                className="py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-lg w-full block text-center mb-1"
+                onClick={handleSignOut}>
+                Sign Out
+              </button>
+            ) : (
+              <Link
+                className="py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-lg w-full block text-center mb-1"
+                to="/signIn">
+                Sign In
+              </Link>
+            )}
             <Link
               type="button"
               className="py-2 px-6 bg-[#1cc7c1] hover:bg-opacity-90 text-sm text-white font-bold rounded-lg w-full block text-center"
