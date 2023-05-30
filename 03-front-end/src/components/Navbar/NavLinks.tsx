@@ -2,9 +2,11 @@ import { Link, NavLink } from 'react-router-dom';
 
 interface NavLinksProps {
   scrollToSection(sectionId: string): void;
+  handleSignOut: () => void;
+  isSessionValid: boolean | undefined;
 }
 
-const NavLinks = ({ scrollToSection }: NavLinksProps) => {
+const NavLinks = ({ scrollToSection, handleSignOut, isSessionValid }: NavLinksProps) => {
   return (
     <>
       <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
@@ -75,11 +77,21 @@ const NavLinks = ({ scrollToSection }: NavLinksProps) => {
           </NavLink>
         </li>
       </ul>
-      <Link
-        className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200"
-        to="/signIn">
-        Sign In
-      </Link>
+
+      {isSessionValid ? (
+        <button
+          type="button"
+          onClick={handleSignOut}
+          className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200">
+          Sign Out
+        </button>
+      ) : (
+        <Link
+          className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200"
+          to="/signIn">
+          Sign In
+        </Link>
+      )}
       <Link
         className="hidden lg:inline-block py-2 px-6 bg-[#1cc7c1] hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200"
         to="/signUp">

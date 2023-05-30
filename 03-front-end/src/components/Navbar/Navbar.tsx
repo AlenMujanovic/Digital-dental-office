@@ -1,11 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NavLinks from './NavLinks';
 import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
 import flouride from '../../assets/flouride.png';
+import { SessionService } from '../../services';
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isSessionValid, setSessionValid] = useState<boolean | undefined>(false);
+
+  useEffect(() => {
+    if (SessionService.isSessionValid()) {
+      setSessionValid(true);
+    }
+  }, [setSessionValid]);
+
+  const handleSignOut = async () => {
+    await SessionService.clearSession();
+    setSessionValid(false);
+  };
 
   const handleBurgerClick = () => {
     setMenuOpen(!menuOpen);
@@ -37,9 +50,16 @@ const Navbar = () => {
         </button>
       </div>
       <nav className={`${menuOpen ? '' : 'hidden'} absolute top-full left-0 w-full lg:static lg:w-auto lg:flex`}>
-        <NavLinks scrollToSection={scrollToSection} />
+        <NavLinks scrollToSection={scrollToSection} handleSignOut={handleSignOut} isSessionValid={isSessionValid} />
       </nav>
-      {menuOpen && <Sidebar onClose={handleCloseClick} scrollToSection={scrollToSection} />}
+      {menuOpen && (
+        <Sidebar
+          onClose={handleCloseClick}
+          scrollToSection={scrollToSection}
+          handleSignOut={handleSignOut}
+          isSessionValid={isSessionValid}
+        />
+      )}
     </header>
   );
 };
