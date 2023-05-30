@@ -27,7 +27,7 @@ const SignIn = () => {
     }
   }, [navigate, setSession]);
 
-  const handleSignIn = async (e: FormEvent) => {
+  const handleSignIn = (e: FormEvent) => {
     e.preventDefault();
 
     setIsLoading(() => true);
