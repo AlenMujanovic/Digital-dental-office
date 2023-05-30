@@ -6,6 +6,7 @@ import { authStore } from '../stores/authStore';
 import { useSignIn } from '../hooks/user';
 import { toast } from 'react-toastify';
 import { Button, Input, Navbar } from '../components';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 export interface ISignIn {
   email: string;
@@ -16,10 +17,15 @@ const SignIn = () => {
   const navigate = useNavigate();
   const setSession = useSetRecoilState(authStore);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
 
   const { mutate: loginUser } = useSignIn();
+
+  const { register, handleSubmit } = useForm<FieldValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
   useEffect(() => {
     if (SessionService.isSessionValid()) {
@@ -27,9 +33,7 @@ const SignIn = () => {
     }
   }, [navigate, setSession]);
 
-  const handleSignIn = (e: FormEvent) => {
-    e.preventDefault();
-
+  const onSubmit: SubmitHandler<FieldValues> = ({ email, password }) => {
     setIsLoading(() => true);
 
     loginUser(
@@ -48,7 +52,6 @@ const SignIn = () => {
 
     setIsLoading(() => false);
   };
-
   return (
     <>
       <Navbar />
@@ -60,12 +63,12 @@ const SignIn = () => {
                 <div className="mb-10 text-center md:mb-16">
                   <h1 className="text-2xl font-bold">Digital Dental Office</h1>
                 </div>
-                <form onSubmit={handleSignIn}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-6 text-left">
-                    <Input label="Email" type="email" name="email" onChange={e => setEmail(e.target.value)} />
+                    <Input label="Email" type="email" register={register} id="email" />
                   </div>
                   <div className="mb-6 text-left">
-                    <Input label="Password" type="password" name="password" onChange={e => setPassword(e.target.value)} />
+                    <Input label="Password" type="password" register={register} id="password" />
                   </div>
                   <div className="mb-10">
                     <Button type="submit" className="w-full mt-5 bg-slate-700">
