@@ -3,6 +3,8 @@ import { Button, RadioButton, Input, LoadingSpinner, Navbar } from '../component
 import { useSignUp } from '../hooks/user';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export interface ISignUp {
   name: string;
@@ -14,9 +16,22 @@ export interface ISignUp {
 }
 
 const SignUp = () => {
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().required('Email is required').email('Email is invalid'),
+    password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
+    phone: Yup.string().matches(/^[\\+]?[(]?[0-9]{3}[)]?[-\s\\.]?[0-9]{3}[-\s\\.]?[0-9]{4,6}$/, 'Phone number is not valid'),
+    gender: Yup.string().required().oneOf(['Male', 'Female'], 'Gender must be Male or Female'),
+    address: Yup.string().required('Address is required'),
+  });
   const { mutate: signUpUser, isLoading } = useSignUp();
 
-  const { register, handleSubmit } = useForm<FieldValues>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FieldValues>({
+    resolver: yupResolver(validationSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -59,27 +74,27 @@ const SignUp = () => {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-6 text-left">
-                    <Input label="Name" type="text" register={register} id="name" />
+                    <Input label="Name" type="text" register={register} errors={errors} id="name" />
                   </div>
                   <div className="mb-6 text-left">
-                    <Input label="Email" type="email" register={register} id="email" />
+                    <Input label="Email" type="email" register={register} errors={errors} id="email" />
                   </div>
                   <div className="mb-6 text-left">
-                    <Input label="Password" type="password" register={register} id="password" />
+                    <Input label="Password" type="password" register={register} errors={errors} id="password" />
                   </div>
                   <div className="mb-6 text-left">
-                    <Input label="Phone" type="phone" register={register} id="phone" />
+                    <Input label="Phone" type="phone" register={register} errors={errors} id="phone" />
                   </div>
                   <div className="mb-6 text-left">
-                    <Input label="Address" type="text" register={register} id="address" />
+                    <Input label="Address" type="text" register={register} errors={errors} id="address" />
                   </div>
-                  <div role="radiogroup" className="mx-auto flex py-5">
+                  <div role="radiogroup" className="mx-auto flex py-7">
                     <label className="text-md text-gray-700">Gender:</label>
-                    <RadioButton id="male" name="gender" value="Male" label="Male" register={register} />
-                    <RadioButton id="female" name="gender" value="Female" label="Female" register={register} />
+                    <RadioButton id="male" name="gender" value="Male" label="Male" register={register} errors={errors} showError />
+                    <RadioButton id="female" name="gender" value="Female" label="Female" register={register} errors={errors} />
                   </div>
                   <div className="mb-10">
-                    <Button type="submit" className="w-full mt-5 bg-slate-700">
+                    <Button type="submit" className="w-full mt-7 bg-slate-700">
                       Sign In
                     </Button>
                   </div>
