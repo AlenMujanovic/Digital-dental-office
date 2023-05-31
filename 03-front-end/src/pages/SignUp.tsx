@@ -1,45 +1,53 @@
-import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import { SessionService } from '../services';
-import { authStore } from '../stores/authStore';
-import { useSignIn } from '../hooks/user';
 import { toast } from 'react-toastify';
-import { Button, Input, LoadingSpinner, Navbar } from '../components';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { Button, RadioButton, Input, LoadingSpinner, Navbar } from '../components';
+import { useSignUp } from '../hooks/user';
+import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-export interface ISignIn {
+export interface ISignUp {
+  name: string;
   email: string;
   password: string;
+  phone: string;
+  gender: string;
+  address: string;
 }
 
-const SignIn = () => {
-  const navigate = useNavigate();
-  const setSession = useSetRecoilState(authStore);
+const SignUp = () => {
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().required('Email is required').email('Email is invalid'),
+    password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
+    phone: Yup.string().matches(/^[\\+]?[(]?[0-9]{3}[)]?[-\s\\.]?[0-9]{3}[-\s\\.]?[0-9]{4,6}$/, 'Phone number is not valid'),
+    gender: Yup.string().required().oneOf(['Male', 'Female'], 'Gender must be Male or Female'),
+    address: Yup.string().required('Address is required'),
+  });
+  const { mutate: signUpUser, isLoading } = useSignUp();
 
-  const { mutate: loginUser, isLoading } = useSignIn();
-
-  const { register, handleSubmit } = useForm<FieldValues>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FieldValues>({
+    resolver: yupResolver(validationSchema),
     defaultValues: {
+      name: '',
       email: '',
       password: '',
+      phone: '',
+      gender: '',
+      address: '',
     },
   });
 
-  useEffect(() => {
-    if (SessionService.isSessionValid()) {
-      navigate('/');
-    }
-  }, [navigate, setSession]);
-
-  const onSubmit: SubmitHandler<FieldValues> = ({ email, password }) => {
-    loginUser(
-      { email, password },
+  const onSubmit: SubmitHandler<FieldValues> = ({ name, email, password, phone, gender, address }) => {
+    signUpUser(
+      { name, email, password, phone, gender, address },
       {
         onSuccess(data) {
-          SessionService.saveSession(data.results, data.token);
-          setSession(() => data.results);
-          navigate('/');
+          toast.success(data.message);
         },
         onError(error) {
           toast.error(error.message);
@@ -62,17 +70,31 @@ const SignIn = () => {
               <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-[#F4F7FF] py-16 px-10 text-center sm:px-12 md:px-[60px]">
                 <div className="mb-10 text-center md:mb-16">
                   <h1 className="text-2xl font-bold">Digital Dental Office</h1>
-                  <h2 className="text-lg font-bold">Sign In</h2>
+                  <h2 className="text-lg font-bold">Sign Up</h2>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-6 text-left">
-                    <Input label="Email" type="email" register={register} id="email" />
+                    <Input label="Name" type="text" register={register} errors={errors} id="name" />
                   </div>
                   <div className="mb-6 text-left">
-                    <Input label="Password" type="password" register={register} id="password" />
+                    <Input label="Email" type="email" register={register} errors={errors} id="email" />
+                  </div>
+                  <div className="mb-6 text-left">
+                    <Input label="Password" type="password" register={register} errors={errors} id="password" />
+                  </div>
+                  <div className="mb-6 text-left">
+                    <Input label="Phone" type="phone" register={register} errors={errors} id="phone" />
+                  </div>
+                  <div className="mb-6 text-left">
+                    <Input label="Address" type="text" register={register} errors={errors} id="address" />
+                  </div>
+                  <div role="radiogroup" className="mx-auto flex py-7">
+                    <label className="text-md text-gray-700">Gender:</label>
+                    <RadioButton id="male" name="gender" value="Male" label="Male" register={register} errors={errors} showError />
+                    <RadioButton id="female" name="gender" value="Female" label="Female" register={register} errors={errors} />
                   </div>
                   <div className="mb-10">
-                    <Button type="submit" className="w-full mt-5 bg-slate-700">
+                    <Button type="submit" className="w-full mt-7 bg-slate-700">
                       Sign In
                     </Button>
                   </div>
@@ -110,13 +132,11 @@ const SignIn = () => {
                     </a>
                   </li>
                 </ul>
-                <a href="#" className="mb-2 inline-block text-base text-[#adadad] hover:text-primary hover:underline">
-                  Forget Password?
-                </a>
+
                 <p className="text-base text-[#adadad]">
-                  Not a member yet?
-                  <Link to="/signUp" className="text-primary hover:underline">
-                    Sign Up
+                  Already have account?
+                  <Link to="/signIn" className="text-primary hover:underline">
+                    Sign In
                   </Link>
                 </p>
 
@@ -167,4 +187,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

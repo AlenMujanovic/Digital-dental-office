@@ -1,7 +1,7 @@
 import AuthGuard from './AuthGuard';
 import { Navbar } from './Navbar';
 import { Hero, TestimonialSection, InfoCards, OurServices, AboutSection, OurTeam, ContactUs } from './LandingPage';
-import { Button, Input, Textarea } from './FormElements';
+import { Button, Input, Textarea, RadioButton } from './FormElements';
 import Footer from './Footer';
 import { LoadingSpinner } from './UIElements';
 
@@ -20,4 +20,5 @@ export {
   Textarea,
   Footer,
   LoadingSpinner,
+  RadioButton,
 };
