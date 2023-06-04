@@ -20,7 +20,7 @@ const AuthGuard = () => {
     setAuthStoreSession(() => null);
   }, [location, setAuthStoreSession]);
 
-  return session ? <Outlet /> : <Navigate to="/" state={{ from: location }} />;
+  return session ? <Outlet /> : <Navigate to="/signIn" state={{ from: location }} />;
 };
 
 export default AuthGuard;
