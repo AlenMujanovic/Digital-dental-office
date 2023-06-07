@@ -26,9 +26,7 @@ const Appointment = () => {
     <>
       <Navbar />
       <main>
-        <section
-          id="home"
-          className="relative bg-white pt-[120px] pb-[110px] lg:pt-[150px] bg-dentistChair bg-no-repeat bg-cover shadow-inset-white">
+        <section className="relative bg-white pt-[120px] pb-[110px] lg:pt-[150px] bg-dentistChair bg-no-repeat bg-cover shadow-inset-white">
           <div className="container mx-auto">
             <div className=" flex flex-wrap">
               <div className="w-full px-4 lg:w-5/12">
@@ -97,7 +95,7 @@ const Appointment = () => {
         <section className="p-4 text-gray-600 body-font flex justify-center items-center">
           <div className="container px-5 pb-24 mx-auto pt-1">
             <div className="flex flex-wrap -m-4 text-center justify-between mb-10">
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 p-5">
+              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500">
                 <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
                   <div className="mx-auto py-5">
                     <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
@@ -109,7 +107,7 @@ const Appointment = () => {
                 </div>
               </div>
 
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0 p-5">
+              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0">
                 <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
                   <div className="mx-auto py-5">
                     <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
@@ -120,7 +118,7 @@ const Appointment = () => {
                   </div>
                 </div>
               </div>
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0 p-5">
+              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0">
                 <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
                   <div className="mx-auto py-5">
                     <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
@@ -133,7 +131,7 @@ const Appointment = () => {
               </div>
             </div>
             <div className="flex flex-wrap -m-4 text-center justify-between">
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 p-5">
+              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500">
                 <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
                   <div className="mx-auto py-5">
                     <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
@@ -145,7 +143,7 @@ const Appointment = () => {
                 </div>
               </div>
 
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0 p-5">
+              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0">
                 <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
                   <div className="mx-auto py-5">
                     <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
@@ -156,7 +154,7 @@ const Appointment = () => {
                   </div>
                 </div>
               </div>
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0 p-5">
+              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0">
                 <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
                   <div className="mx-auto py-5">
                     <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
