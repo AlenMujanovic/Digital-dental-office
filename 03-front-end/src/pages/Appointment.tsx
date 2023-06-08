@@ -1,26 +1,41 @@
 import { useState } from 'react';
-import { Button, Footer, Navbar } from '../components';
+import { Button, Footer, LoadingSpinner, Navbar } from '../components';
 import { DayPicker } from 'react-day-picker';
+import { toast } from 'react-toastify';
 
 import dentistChair from '../assets/dentistChair.jpg';
+import { useAppointments } from '../hooks';
+import { formatTimeRange } from '../utils';
 
 const Appointment = () => {
   const [selected, setSelected] = useState<Date>();
+
+  let formattedDate = '';
 
   let footer = <p>Please pick a day.</p>;
 
   if (selected) {
     const date = new Date(selected);
+    date.setUTCHours(0, 0, 0, 0);
+    date.setDate(date.getDate() + 1);
 
-    const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+    formattedDate = date.toISOString().split('T')[0];
 
-    footer = <p>You picked {formattedDate}.</p>;
+    const formattedDateFooter = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+
+    footer = <p>You picked {formattedDateFooter}.</p>;
   }
 
   const isPastDay = (day: Date) => {
     const today = new Date();
     return day < today;
   };
+
+  const { data: appointments, isFetching, isError, error } = useAppointments(formattedDate);
+
+  if (isError) {
+    toast.error(error.message);
+  }
 
   return (
     <>
@@ -94,78 +109,31 @@ const Appointment = () => {
         </div>
         <section className="p-4 text-gray-600 body-font flex justify-center items-center">
           <div className="container px-5 pb-24 mx-auto pt-1">
-            <div className="flex flex-wrap -m-4 text-center justify-between mb-10">
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500">
-                <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
-                  <div className="mx-auto py-5">
-                    <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
-                    <p className="text-md m-1 text-black font-semibold">8:00 AM - 9:00 AM</p>
-                    <Button type="button" className="mt-2 text-sm sm:text-base">
-                      BOOK APPOINTMENT
-                    </Button>
-                  </div>
-                </div>
+            {isFetching ? (
+              <LoadingSpinner noOverlay />
+            ) : (
+              <div className="flex flex-wrap -m-4 text-center justify-between mb-10">
+                {appointments && appointments.results.length > 1 ? (
+                  appointments.results.map(item => (
+                    <div key={item._id} className="sm:w-full lg:w-[32%] w-full py-5 hover:scale-105 duration-500">
+                      <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
+                        <div className="mx-auto py-5">
+                          <h2 className="text-[#1cc7c1] text-xl font-semibold">{item.type}</h2>
+                          <p className="text-md m-1 text-black font-semibold">
+                            {formatTimeRange(item.startTimeAndDate, item.endTimeAndDate)}
+                          </p>
+                          <Button type="button" className="mt-2 text-sm sm:text-base">
+                            BOOK APPOINTMENT
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p className="mx-auto text-xl font-semibold">No Appointments on this day. Try another one!</p>
+                )}
               </div>
-
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0">
-                <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
-                  <div className="mx-auto py-5">
-                    <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
-                    <p className="text-md m-1 text-black font-semibold">8:00 AM - 9:00 AM</p>
-                    <Button type="button" className="mt-2 text-sm md:text-base">
-                      BOOK APPOINTMENT
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0">
-                <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
-                  <div className="mx-auto py-5">
-                    <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
-                    <p className="text-md m-1 text-black font-semibold">8:00 AM - 9:00 AM</p>
-                    <Button type="button" className="mt-2 text-sm md:text-base">
-                      BOOK APPOINTMENT
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-wrap -m-4 text-center justify-between">
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500">
-                <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
-                  <div className="mx-auto py-5">
-                    <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
-                    <p className="text-md m-1 text-black font-semibold">8:00 AM - 9:00 AM</p>
-                    <Button type="button" className="mt-2 text-sm md:text-base">
-                      BOOK APPOINTMENT
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0">
-                <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
-                  <div className="mx-auto py-5">
-                    <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
-                    <p className="text-md m-1 text-black font-semibold">8:00 AM - 9:00 AM</p>
-                    <Button type="button" className="mt-2 text-sm md:text-base">
-                      BOOK APPOINTMENT
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              <div className="sm:w-full lg:w-[32%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0">
-                <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
-                  <div className="mx-auto py-5">
-                    <h2 className="text-[#1cc7c1] text-xl font-semibold">Teeth Orthodontics</h2>
-                    <p className="text-md m-1 text-black font-semibold">8:00 AM - 9:00 AM</p>
-                    <Button type="button" className="mt-2 text-sm md:text-base">
-                      BOOK APPOINTMENT
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </section>
       </main>

@@ -1,6 +1,4 @@
-import { ISignIn } from '../pages/SignIn';
-import { ISignUp } from '../pages/SignUp';
-import { IUser } from '../types';
+import { IUser, ISignIn, ISignUp } from '../types';
 
 const API_URL = import.meta.env.VITE_API_URL;
 

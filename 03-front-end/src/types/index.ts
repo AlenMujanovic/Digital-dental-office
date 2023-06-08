@@ -1,3 +1,5 @@
-import IUser from './IUser';
+import { IUser } from './User';
+import { ISignIn, ISignUp } from './Auth';
+import { IAppointment } from './Appointment';
 
-export type { IUser };
+export type { IUser, ISignIn, ISignUp, IAppointment };

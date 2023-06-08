@@ -8,7 +8,7 @@ const { MONGO_DB } = require('../config/environments');
 
 const MS_PER_HOUR = 1000 * 60 * 60;
 const WORKING_HOURS_START = 8;
-const WORKING_HOURS_END = 16;
+const WORKING_HOURS_END = 17;
 
 function createAppointmentsForNextMonth() {
   const now = new Date();
