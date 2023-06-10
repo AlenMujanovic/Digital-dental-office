@@ -28,6 +28,7 @@ function createAppointmentsForNextMonth() {
         Appointment.create({
           startTimeAndDate,
           endTimeAndDate,
+          user: null,
           status: 'Free',
         });
       }
@@ -49,6 +50,7 @@ function createAppointmentsForTomorrow() {
     Appointment.create({
       startTimeAndDate,
       endTimeAndDate,
+      user: null,
       status: 'Free',
     });
   }
