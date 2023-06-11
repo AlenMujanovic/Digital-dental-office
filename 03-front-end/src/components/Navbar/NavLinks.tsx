@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+import Dropdown from '../UIElements/Dropdown';
 
 interface NavLinksProps {
   scrollToSection(sectionId: string): void;
@@ -79,12 +80,13 @@ const NavLinks = ({ scrollToSection, handleSignOut, isSessionValid }: NavLinksPr
       </ul>
 
       {isSessionValid ? (
-        <button
-          type="button"
-          onClick={handleSignOut}
-          className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200">
-          Sign Out
-        </button>
+        // <button
+        //   type="button"
+        //   onClick={handleSignOut}
+        //   className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200">
+        //   Sign Out
+        // </button>
+        <Dropdown handleSignOut={handleSignOut} />
       ) : (
         <Link
           className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-slate-700 hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200"

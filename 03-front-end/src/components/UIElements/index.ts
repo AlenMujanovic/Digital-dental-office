@@ -1,3 +1,4 @@
 import LoadingSpinner from './LoadingSpinner';
+import Dropdown from './Dropdown';
 
-export { LoadingSpinner };
+export { LoadingSpinner, Dropdown };
