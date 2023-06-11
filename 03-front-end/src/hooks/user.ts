@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { UserService } from '../services';
 import { IUser, ISignIn, ISignUp } from '../types';
 
@@ -11,5 +11,11 @@ export const useSignIn = () => {
 export const useSignUp = () => {
   return useMutation<{ message: string }, Error, ISignUp>(async (data: ISignUp) => {
     return await UserService.signUp(data);
+  });
+};
+
+export const useUserProfile = () => {
+  return useQuery<unknown, Error, { results: IUser; message: string }>(['user', 'profile'], async () => {
+    return await UserService.getUserProfile();
   });
 };

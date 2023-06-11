@@ -5,7 +5,7 @@ const { permissionAccess } = require('../../middlewares/permissionAccess');
 
 const router = express.Router();
 
-router.get('/appointment', catchAsyncError(AppointmentController.appointments));
-router.patch('/appointment/:appointmentId', catchAsyncError(AppointmentController.updateAppointment));
+router.get('/appointment', permissionAccess(), catchAsyncError(AppointmentController.appointments));
+router.patch('/appointment/:appointmentId', permissionAccess(), catchAsyncError(AppointmentController.updateAppointment));
 
 module.exports = router;

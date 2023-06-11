@@ -1,5 +1,5 @@
 import AuthGuard from './AuthGuard';
-import { Navbar } from './Navbar';
+import { Navbar, DashboardSidebar } from './Navigation';
 import { Hero, TestimonialSection, InfoCards, OurServices, AboutSection, OurTeam, ContactUs } from './LandingPage';
 import { Button, Input, Textarea, RadioButton } from './FormElements';
 import Footer from './Footer';
@@ -22,4 +22,5 @@ export {
   LoadingSpinner,
   Dropdown,
   RadioButton,
+  DashboardSidebar,
 };
