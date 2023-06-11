@@ -8,6 +8,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-day-picker/dist/style.css';
+import './styles/index.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {

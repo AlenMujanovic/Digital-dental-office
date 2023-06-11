@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import dentistChair from '../../assets/dentistChair.jpg';
-import { Button } from '../FormElements';
 
 const Hero = () => {
   return (
@@ -20,9 +20,11 @@ const Hero = () => {
               </p>
               <ul className="flex flex-wrap items-center">
                 <li>
-                  <Button type="button" className="inline-flex">
+                  <Link
+                    to="/appointment"
+                    className="inline-flex justify-center rounded-lg py-3 px-6 text-center text-base font-normal text-white hover:bg-opacity-90 sm:px-10 lg:px-8 xl:px-10 bg-[#1cc7c1]">
                     GET APPOINTMENT
-                  </Button>
+                  </Link>
                 </li>
               </ul>
             </div>

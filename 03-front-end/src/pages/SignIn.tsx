@@ -3,15 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { SessionService } from '../services';
 import { authStore } from '../stores/authStore';
-import { useSignIn } from '../hooks/user';
+import { useSignIn } from '../hooks';
 import { toast } from 'react-toastify';
 import { Button, Input, LoadingSpinner, Navbar } from '../components';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-
-export interface ISignIn {
-  email: string;
-  password: string;
-}
 
 const SignIn = () => {
   const navigate = useNavigate();

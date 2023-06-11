@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rdp-day_today:not(.rdp-day_outside) {
+  color: red;
+  border: 1px solid red;
+}
+
+.rdp {
+  --rdp-cell-size: 52px !important;
+  --rdp-accent-color: #1cc7c1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .rdp {
+    --rdp-cell-size: 40px !important;
+  }
+}
+
+.rdp-tfoot {
+  font-weight: bold;
+  text-align: center;
+}

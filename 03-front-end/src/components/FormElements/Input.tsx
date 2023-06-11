@@ -6,7 +6,7 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   type: string;
   id: string;
   register?: UseFormRegister<FieldValues>;
-  errors: FieldErrors;
+  errors?: FieldErrors;
 };
 
 const Input = ({ label, type, register, id, errors }: InputProps) => {

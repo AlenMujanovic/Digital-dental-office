@@ -23,6 +23,7 @@ const app = express();
 
 // Application Routes
 const UserRoutes = require('./components/user/userRouter');
+const AppointmentRoutes = require('./components/appointment/appointmentRouter');
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '20mb' }));
@@ -78,12 +79,15 @@ process.on('SIGINT', () => {
 });
 
 app.use('/api/v1', UserRoutes);
+app.use('/api/v1', AppointmentRoutes);
+
+require('./scripts/appointmentScript');
 
 app.use(ErrorHandler());
 
 // show env vars
 console.log(`__________ ${name} __________`);
-console.log('Time server started:', new Date());
+console.log('Time server started:', new Date().toString());
 console.log(`Starting on port: ${port}`);
 console.log(`Env: ${environments.NODE_ENV}`);
 console.log(`App url: ${appURL}`);

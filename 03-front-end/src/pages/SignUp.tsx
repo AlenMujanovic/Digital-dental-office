@@ -1,19 +1,10 @@
 import { toast } from 'react-toastify';
 import { Button, RadioButton, Input, LoadingSpinner, Navbar } from '../components';
-import { useSignUp } from '../hooks/user';
+import { useSignUp } from '../hooks';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
-export interface ISignUp {
-  name: string;
-  email: string;
-  password: string;
-  phone: string;
-  gender: string;
-  address: string;
-}
 
 const SignUp = () => {
   const validationSchema = Yup.object().shape({
