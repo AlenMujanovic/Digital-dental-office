@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { IAppointment } from '../types';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { IAppointment, IAppointmentRequest } from '../types';
 import { AppointmentService } from '../services';
 
 export const useAppointments = (date: string) => {
@@ -12,4 +12,10 @@ export const useAppointments = (date: string) => {
       enabled: !!date,
     }
   );
+};
+
+export const useUpdateAppointment = () => {
+  return useMutation<{ message: string; results: IAppointment }, Error, IAppointmentRequest>(async (data: IAppointmentRequest) => {
+    return await AppointmentService.updateAppointment(data);
+  });
 };

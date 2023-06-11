@@ -6,9 +6,13 @@ import { toast } from 'react-toastify';
 import dentistChair from '../assets/dentistChair.jpg';
 import { useAppointments } from '../hooks';
 import { formatTimeRange } from '../utils';
+import { useUpdateAppointment } from '../hooks/Appointment';
+import { useQueryClient } from '@tanstack/react-query';
 
 const Appointment = () => {
   const [selected, setSelected] = useState<Date>();
+
+  const queryClient = useQueryClient();
 
   let formattedDate = '';
 
@@ -32,6 +36,27 @@ const Appointment = () => {
   };
 
   const { data: appointments, isFetching, isError, error } = useAppointments(formattedDate);
+
+  const { mutate: updateApp } = useUpdateAppointment();
+
+  const updateAppointment = (appointmentId: string) => {
+    updateApp(
+      {
+        _id: appointmentId,
+        status: 'Pending',
+        type: 'Test',
+      },
+      {
+        onSuccess: data => {
+          queryClient.invalidateQueries({ queryKey: ['appointments'] });
+          toast.success('Successfully booked appointment');
+        },
+        onError: error => {
+          toast.error(error.message);
+        },
+      }
+    );
+  };
 
   if (isError) {
     toast.error(error.message);
@@ -114,21 +139,23 @@ const Appointment = () => {
             ) : (
               <div className="flex flex-wrap -m-4 text-center justify-between mb-10">
                 {appointments && appointments.results.length > 1 ? (
-                  appointments.results.map(item => (
-                    <div key={item._id} className="sm:w-full lg:w-[32%] w-full py-5 hover:scale-105 duration-500">
-                      <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
-                        <div className="mx-auto py-5">
-                          <h2 className="text-[#1cc7c1] text-xl font-semibold">{item.type}</h2>
-                          <p className="text-md m-1 text-black font-semibold">
-                            {formatTimeRange(item.startTimeAndDate, item.endTimeAndDate)}
-                          </p>
-                          <Button type="button" className="mt-2 text-sm sm:text-base">
-                            BOOK APPOINTMENT
-                          </Button>
+                  appointments.results
+                    .filter(item => item.status === 'Free')
+                    .map(item => (
+                      <div key={item._id} className="sm:w-full lg:w-[32%] w-full py-5 hover:scale-105 duration-500">
+                        <div className="flex items-center p-4 rounded-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] bg-white">
+                          <div className="mx-auto py-5">
+                            <h2 className="text-[#1cc7c1] text-xl font-semibold">{item.type}</h2>
+                            <p className="text-md m-1 text-black font-semibold">
+                              {formatTimeRange(item.startTimeAndDate, item.endTimeAndDate)}
+                            </p>
+                            <Button type="button" className="mt-2 text-sm sm:text-base" onClick={() => updateAppointment(item._id)}>
+                              BOOK APPOINTMENT
+                            </Button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))
+                    ))
                 ) : (
                   <p className="mx-auto text-xl font-semibold">No Appointments on this day. Try another one!</p>
                 )}
