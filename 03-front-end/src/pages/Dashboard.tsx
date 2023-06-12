@@ -1,12 +1,9 @@
-import { DashboardSidebar } from '../components';
-import { useUserProfile } from '../hooks';
+import { DashboardNavbar } from '../components';
 
 const Dashboard = () => {
-  const { data: user } = useUserProfile();
-
   return (
     <>
-      <DashboardSidebar user={user?.results} />
+      <DashboardNavbar />
     </>
   );
 };

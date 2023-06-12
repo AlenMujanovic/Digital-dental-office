@@ -1,4 +1,4 @@
 import Navbar from './Navbar';
-import DashboardSidebar from './DashboardSidebar';
+import DashboardNavbar from './DashboardNavbar';
 
-export { Navbar, DashboardSidebar };
+export { Navbar, DashboardNavbar };
