@@ -17,11 +17,9 @@ const DashboardSidebar = ({ sidebarOpen, user }: DashboardSidebarProps) => {
     navigate('/');
   };
 
-  console.log(user?.role);
-
   return (
     <div>
-      <div className="flex overflow-hidden bg-white pt-16">
+      <div className="flex overflow-hidden bg-white">
         <aside
           className={`fixed z-20 h-full top-0 left-0 pt-16 lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75 ${
             sidebarOpen ? 'flex' : 'hidden'
