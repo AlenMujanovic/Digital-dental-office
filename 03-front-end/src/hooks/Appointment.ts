@@ -31,3 +31,15 @@ export const useAppointmentsForUser = (date: string) => {
     }
   );
 };
+
+export const useAppointmentsByRole = (date: string) => {
+  return useQuery<unknown, Error, { results: IAppointment[]; message: string }>(
+    ['appointmentsByRole', date],
+    async () => {
+      return await AppointmentService.appointmentsByRole(date);
+    },
+    {
+      enabled: !!date,
+    }
+  );
+};

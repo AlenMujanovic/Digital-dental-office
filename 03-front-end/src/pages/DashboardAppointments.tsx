@@ -1,9 +1,8 @@
 import { DayPicker } from 'react-day-picker';
-import { DashboardNavbar } from '../components';
+import { DashboardNavbar, LoadingSpinner } from '../components';
 import { useState } from 'react';
-
-import { useAppointmentsForUser } from '../hooks';
 import { formatTimeRange } from '../utils';
+import { useAppointmentsByRole } from '../hooks';
 
 const DashboardAppoiontments = () => {
   const [selected, setSelected] = useState<Date>();
@@ -25,9 +24,7 @@ const DashboardAppoiontments = () => {
     footer = <p>You picked {formattedDateFooter}.</p>;
   }
 
-  const { data: appointments } = useAppointmentsForUser(formattedDate);
-
-  console.log(appointments);
+  const { data: appointments, isFetching } = useAppointmentsByRole(formattedDate);
 
   return (
     <>
@@ -56,42 +53,53 @@ const DashboardAppoiontments = () => {
                     <div className="overflow-x-auto rounded-lg">
                       <div className="align-middle inline-block min-w-full">
                         <div className="shadow overflow-hidden sm:rounded-lg">
-                          <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                              <tr>
-                                <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  Name
-                                </th>
-                                <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  Scheduled
-                                </th>
-                                <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  Type
-                                </th>
-                                <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                  Status
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody className="bg-white">
-                              {appointments && appointments.results.length > 1 ? (
-                                appointments?.results.map(item => (
-                                  <tr key={item._id}>
-                                    <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                      <span className="font-semibold">{item.user.name}</span>
+                          {isFetching ? (
+                            <div className="flex justify-center">
+                              <LoadingSpinner noOverlay />
+                            </div>
+                          ) : (
+                            <table className="min-w-full divide-y divide-gray-200">
+                              <thead className="bg-gray-50">
+                                <tr>
+                                  <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Name
+                                  </th>
+                                  <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Scheduled
+                                  </th>
+                                  <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Type
+                                  </th>
+                                  <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status
+                                  </th>
+                                </tr>
+                              </thead>
+
+                              <tbody className="bg-white">
+                                {appointments && appointments.results.length > 1 ? (
+                                  appointments?.results.map(item => (
+                                    <tr key={item._id}>
+                                      <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                        <span className="font-semibold"> {item.user && item.user.name ? item.user.name : 'No User'}</span>
+                                      </td>
+                                      <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                        {formatTimeRange(item.startTimeAndDate, item.endTimeAndDate)}
+                                      </td>
+                                      <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{item.type}</td>
+                                      <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{item.status}</td>
+                                    </tr>
+                                  ))
+                                ) : (
+                                  <tr>
+                                    <td>
+                                      <p className="p-5">No appointments for selected date!</p>
                                     </td>
-                                    <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                      {formatTimeRange(item.startTimeAndDate, item.endTimeAndDate)}
-                                    </td>
-                                    <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{item.type}</td>
-                                    <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{item.status}</td>
                                   </tr>
-                                ))
-                              ) : (
-                                <p className="p-5">No appointments for selected date!</p>
-                              )}
-                            </tbody>
-                          </table>
+                                )}
+                              </tbody>
+                            </table>
+                          )}
                         </div>
                       </div>
                     </div>
