@@ -48,6 +48,11 @@ const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
             Contact
           </NavLink>
         </li>
+        <li className="mb-1">
+          <NavLink className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded" to="/dashboard">
+            Dashboard
+          </NavLink>
+        </li>
       </ul>
     </ul>
   );
