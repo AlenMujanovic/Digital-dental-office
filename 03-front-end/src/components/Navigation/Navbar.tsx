@@ -4,10 +4,13 @@ import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
 import flouride from '../../assets/flouride.png';
 import { SessionService } from '../../services';
+import { useQueryClient } from '@tanstack/react-query';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [isSessionValid, setSessionValid] = useState<boolean | undefined>(false);
+
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (SessionService.isSessionValid()) {
@@ -16,6 +19,7 @@ const Navbar = () => {
   }, [setSessionValid]);
 
   const handleSignOut = async () => {
+    queryClient.removeQueries();
     await SessionService.clearSession();
     setSessionValid(false);
   };

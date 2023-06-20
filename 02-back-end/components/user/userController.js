@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User } = require('../../models');
+const { User, roles } = require('../../models');
 const { issueNewToken } = require('../../lib/jwtHandler');
 const { customShortId } = require('../../lib/misc');
 const { sendEmail, emailTemplates } = require('../../lib/emailHandler');
@@ -165,5 +165,14 @@ module.exports.refreshToken = async (req, res) => {
   return res.status(200).send({
     message: 'Successfully refreshed token',
     token: issueNewToken(user),
+  });
+};
+
+module.exports.getPatients = async (req, res) => {
+  const results = await User.find({ role: 'Patient' }).lean();
+
+  return res.status(200).send({
+    message: 'Successfully returned list of patients',
+    results,
   });
 };
