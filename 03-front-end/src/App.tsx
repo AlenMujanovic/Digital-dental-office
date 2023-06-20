@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { AuthGuard } from './components';
-import { NotFound, SignIn, Home, SignUp, Appointment, Dashboard, DashboardAppoiontments } from './pages';
+import { NotFound, SignIn, Home, SignUp, Appointment, Dashboard, DashboardAppointments, DashboardPatients } from './pages';
 
 const App = () => {
   return (
@@ -11,7 +11,8 @@ const App = () => {
       <Route element={<AuthGuard />}>
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/appointments" element={<DashboardAppoiontments />} />
+        <Route path="/dashboard/appointments" element={<DashboardAppointments />} />
+        <Route path="/dashboard/patients" element={<DashboardPatients />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

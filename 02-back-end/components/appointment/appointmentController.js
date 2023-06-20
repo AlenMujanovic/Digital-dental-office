@@ -1,6 +1,5 @@
 const error = require('../../middlewares/errorHandling/errorConstants');
-const { Appointment } = require('../../models');
-const { statuses } = require('../../models/appointment');
+const { Appointment, statuses } = require('../../models');
 
 module.exports.appointments = async (req, res) => {
   const { date } = req.query;

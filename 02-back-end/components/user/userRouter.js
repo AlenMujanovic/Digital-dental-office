@@ -12,6 +12,9 @@ router
   // .post('/user/forgot-password', catchAsyncError(UserController.forgotPassword))
   // .post('/user/reset-password/:resetToken', catchAsyncError(UserController.resetPassword))
   .get('/user/logged-user', permissionAccess(), catchAsyncError(UserController.getProfile))
-  .post('/user/refresh-token', catchAsyncError(UserController.refreshToken));
+  .post('/user/refresh-token', catchAsyncError(UserController.refreshToken))
+
+  // Doctor only routes
+  .get('/user/patient', permissionAccess('Doctor'), catchAsyncError(UserController.getPatients));
 
 module.exports = router;

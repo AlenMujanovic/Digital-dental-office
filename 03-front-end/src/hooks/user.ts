@@ -19,3 +19,13 @@ export const useUserProfile = () => {
     return await UserService.getUserProfile();
   });
 };
+
+export const useUserPatients = () => {
+  return useQuery<unknown, Error, { results: IUser[]; message: string }>(
+    ['user', 'patient'],
+    async () => {
+      return await UserService.getPatients();
+    },
+    {}
+  );
+};

@@ -3,6 +3,7 @@ import { SessionService } from '../../services';
 import DashboardSidebarLinks from './DashboardSidebarLinks';
 import { IUser } from '../../types';
 import userProfile from '../../assets/userProfile.png';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface DashboardSidebarProps {
   sidebarOpen: boolean;
@@ -12,7 +13,10 @@ interface DashboardSidebarProps {
 const DashboardSidebar = ({ sidebarOpen, user }: DashboardSidebarProps) => {
   const navigate = useNavigate();
 
+  const queryClient = useQueryClient();
+
   const handleSignOut = async () => {
+    queryClient.removeQueries();
     await SessionService.clearSession();
     navigate('/');
   };

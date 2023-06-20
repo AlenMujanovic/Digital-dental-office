@@ -87,8 +87,33 @@ const getUserProfile = async (): Promise<{ message: string; results: IUser }> =>
   }
 };
 
+const getPatients = async (): Promise<{ message: string; results: IUser }> => {
+  try {
+    const response = await fetch(`${API_URL}/user/patient`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${await SessionService.getSessionFromStorage()}`,
+      },
+    });
+
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      throw new Error(responseData.message);
+    }
+
+    return responseData;
+  } catch (error) {
+    console.log('🚀 ~ file: UserService.ts ~ getPatients ~ error:', error);
+    throw error;
+  }
+};
+
 export const UserService = {
   signIn,
   signUp,
   getUserProfile,
+  getPatients,
 };
