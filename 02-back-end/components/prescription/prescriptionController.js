@@ -22,7 +22,7 @@ module.exports.createPrescription = async (req, res) => {
 };
 
 module.exports.getPrescriptionsByUser = async (req, res) => {
-  const { user } = req.body;
+  const { user } = req.query;
   const { _id: userId, role } = req.user;
 
   if (role === 'Doctor' && !user) {

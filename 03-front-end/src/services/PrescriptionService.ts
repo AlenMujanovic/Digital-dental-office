@@ -3,9 +3,10 @@ import { IPrescription } from '../types';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const getPrescriptions = async (): Promise<{ message: string; results: IPrescription }> => {
+const getPrescriptions = async (userId?: string): Promise<{ message: string; results: IPrescription }> => {
   try {
-    const response = await fetch(`${API_URL}/prescription?${new URLSearchParams()}`, {
+    const url = `${API_URL}/prescription${userId ? `?user=${userId}` : ''}`;
+    const response = await fetch(url, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

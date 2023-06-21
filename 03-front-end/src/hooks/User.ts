@@ -20,12 +20,14 @@ export const useUserProfile = () => {
   });
 };
 
-export const useUserPatients = () => {
+export const useUserPatients = (userRole?: string) => {
   return useQuery<unknown, Error, { results: IUser[]; message: string }>(
     ['user', 'patient'],
     async () => {
       return await UserService.getPatients();
     },
-    {}
+    {
+      enabled: userRole === 'Doctor',
+    }
   );
 };

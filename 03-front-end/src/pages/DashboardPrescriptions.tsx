@@ -1,12 +1,20 @@
-import { DashboardNavbar } from '../components';
+import { DashboardNavbar, LoadingSpinner } from '../components';
 import { usePrescriptions } from '../hooks/Prescription';
 import userProfile from '../assets/userProfile.png';
 import { formatDateTime } from '../utils';
+import { useUserPatients, useUserProfile } from '../hooks';
+import { useState } from 'react';
 
 const DashboardPrescriptions = () => {
-  const { data: prescriptions, isFetching, error } = usePrescriptions();
+  const [userId, setUserId] = useState<string | undefined>(undefined);
 
-  console.log(prescriptions);
+  const { data: loggedUser } = useUserProfile();
+  const { data: prescriptions } = usePrescriptions(userId, loggedUser?.results.role);
+  const { data: users, isFetching } = useUserPatients(loggedUser?.results.role);
+
+  const handleButtonClick = (userId: string) => {
+    setUserId(userId);
+  };
 
   return (
     <>
@@ -16,7 +24,93 @@ const DashboardPrescriptions = () => {
           <main>
             <div className="pt-20 lg:pt-16 px-4">
               <div className="w-full">
-                <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-82 col-span-3 ">
+                {loggedUser?.results.role === 'Doctor' ? (
+                  <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-82 col-span-1">
+                    <div className="mb-4 flex items-center justify-between">
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Patients</h3>
+                        <span className="text-base font-normal text-gray-500">This is a list of all patients</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-col mt-8">
+                      <div className="overflow-x-auto rounded-lg">
+                        <div className="align-middle inline-block min-w-full">
+                          <div className="shadow overflow-hidden sm:rounded-lg">
+                            {isFetching ? (
+                              <div className="flex justify-center">
+                                <LoadingSpinner noOverlay />
+                              </div>
+                            ) : (
+                              <table className="min-w-full divide-y divide-gray-200">
+                                <thead className="bg-gray-50">
+                                  <tr>
+                                    <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Name
+                                    </th>
+                                    <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Email
+                                    </th>
+                                    <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Gender
+                                    </th>
+                                    <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Contact
+                                    </th>
+                                    <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Address
+                                    </th>
+                                    <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      All Prescriptions
+                                    </th>
+                                    <th scope="col" className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                      Action
+                                    </th>
+                                  </tr>
+                                </thead>
+
+                                <tbody className="bg-white">
+                                  {users?.results ? (
+                                    users?.results.map(item => (
+                                      <tr key={item._id}>
+                                        <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                          <span className="font-semibold"> {item.name}</span>
+                                        </td>
+                                        <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{item.email}</td>
+                                        <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{item.gender}</td>
+                                        <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{item.phone}</td>
+                                        <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">{item.address}</td>
+                                        <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                          <button
+                                            type="button"
+                                            className="px-4 py-2 bg-[#1cc7c1] text-white rounded-md"
+                                            onClick={() => handleButtonClick(item._id)}>
+                                            View
+                                          </button>
+                                        </td>
+                                        <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                          <button type="button" className="px-4 py-2 bg-[#1cc7c1] text-white rounded-md">
+                                            Add Prescription
+                                          </button>
+                                        </td>
+                                      </tr>
+                                    ))
+                                  ) : (
+                                    <tr>
+                                      <td>
+                                        <p className="p-5">No appointments for selected date!</p>
+                                      </td>
+                                    </tr>
+                                  )}
+                                </tbody>
+                              </table>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+                <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-82 col-span-3 mt-3 ">
                   <div className="mb-4 flex items-center justify-between">
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">Prescriptions</h3>

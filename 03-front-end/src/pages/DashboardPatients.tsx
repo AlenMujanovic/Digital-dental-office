@@ -1,11 +1,10 @@
 import { DashboardNavbar, LoadingSpinner } from '../components';
-import { useUserPatients } from '../hooks';
+import { useUserPatients, useUserProfile } from '../hooks';
 import { toast } from 'react-toastify';
 
 const DashboardPatients = () => {
-  const { data: users, isFetching, error } = useUserPatients();
-
-  console.log(error);
+  const { data: loggedUser } = useUserProfile();
+  const { data: users, isFetching, error } = useUserPatients(loggedUser?.results.role);
 
   if (error) {
     console.log(error);
@@ -58,7 +57,7 @@ const DashboardPatients = () => {
                               </thead>
 
                               <tbody className="bg-white">
-                                {users?.results && users.results.length > 1 ? (
+                                {users?.results ? (
                                   users?.results.map(item => (
                                     <tr key={item._id}>
                                       <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
