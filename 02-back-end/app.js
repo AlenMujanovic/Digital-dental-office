@@ -24,6 +24,7 @@ const app = express();
 // Application Routes
 const UserRoutes = require('./components/user/userRouter');
 const AppointmentRoutes = require('./components/appointment/appointmentRouter');
+const PrescriptionRoutes = require('./components/prescription/prescriptionRouter');
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '20mb' }));
@@ -80,6 +81,7 @@ process.on('SIGINT', () => {
 
 app.use('/api/v1', UserRoutes);
 app.use('/api/v1', AppointmentRoutes);
+app.use('/api/v1', PrescriptionRoutes);
 
 require('./scripts/appointmentScript');
 
