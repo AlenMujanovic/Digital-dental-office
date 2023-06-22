@@ -3,10 +3,22 @@ import { usePrescriptions } from '../hooks/Prescription';
 import userProfile from '../assets/userProfile.png';
 import { formatDateTime } from '../utils';
 import { useUserPatients, useUserProfile } from '../hooks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const DashboardPrescriptions = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const userIdParam = searchParams.get('userId');
+
+    if (userIdParam) {
+      setUserId(userIdParam);
+    }
+  }, [location.search]);
 
   const { data: loggedUser } = useUserProfile();
   const { data: prescriptions } = usePrescriptions(userId, loggedUser?.results.role);

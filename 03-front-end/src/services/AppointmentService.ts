@@ -105,9 +105,39 @@ const appointmentsByRole = async (date: string): Promise<{ message: string; resu
   }
 };
 
+const updateAppointmentStatus = async (data: IAppointmentRequest): Promise<{ message: string; results: IAppointment }> => {
+  try {
+    const { status, _id } = data;
+
+    const response = await fetch(`${API_URL}/appointment/${_id}`, {
+      method: 'PATCH',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${await SessionService.getSessionFromStorage()}`,
+      },
+      body: JSON.stringify({
+        status,
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      throw new Error(responseData.message);
+    }
+
+    return responseData;
+  } catch (error) {
+    console.log('🚀 ~ file: AppointmentService.ts ~ appointments ~ error:', error);
+    throw error;
+  }
+};
+
 export const AppointmentService = {
   appointments,
   updateAppointment,
   appointmentsForUser,
   appointmentsByRole,
+  updateAppointmentStatus,
 };

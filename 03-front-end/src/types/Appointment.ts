@@ -11,6 +11,6 @@ export interface IAppointment {
 
 export interface IAppointmentRequest {
   _id: string;
-  type: string;
+  type?: string;
   status: 'Pending' | 'Canceled' | 'Done' | 'Free';
 }

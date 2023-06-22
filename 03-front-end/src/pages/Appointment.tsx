@@ -4,9 +4,8 @@ import { DayPicker } from 'react-day-picker';
 import { toast } from 'react-toastify';
 
 import dentistChair from '../assets/dentistChair.jpg';
-import { useAppointments } from '../hooks';
+import { useAppointments, useUpdateAppointment } from '../hooks';
 import { formatTimeRange } from '../utils';
-import { useUpdateAppointment } from '../hooks/Appointment';
 import { useQueryClient } from '@tanstack/react-query';
 
 const Appointment = () => {

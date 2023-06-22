@@ -3,7 +3,7 @@ import { Navbar, DashboardNavbar } from './Navigation';
 import { Hero, TestimonialSection, InfoCards, OurServices, AboutSection, OurTeam, ContactUs } from './LandingPage';
 import { Button, Input, Textarea, RadioButton } from './FormElements';
 import Footer from './Footer';
-import { LoadingSpinner, Dropdown } from './UIElements';
+import { LoadingSpinner, Dropdown, Modal } from './UIElements';
 
 export {
   AuthGuard,
@@ -23,4 +23,5 @@ export {
   Dropdown,
   RadioButton,
   DashboardNavbar,
+  Modal,
 };
