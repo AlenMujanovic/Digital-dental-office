@@ -101,3 +101,23 @@ module.exports.appointmentsByRole = async (req, res) => {
     results,
   });
 };
+
+module.exports.updateAppointmentStatus = async (req, res) => {
+  const { status } = req.body;
+  const { appointmentId } = req.params;
+
+  if (!appointmentId || !status) {
+    throw new Error(error.MISSING_PARAMETERS);
+  }
+
+  if (!statuses.includes(status)) {
+    throw new Error(error.INVALID_VALUE);
+  }
+
+  const results = await Appointment.findOneAndUpdate({ _id: appointmentId }, { status }, { new: true }).lean();
+
+  return res.status(200).send({
+    message: 'Successfully updated appointment',
+    results,
+  });
+};

@@ -43,3 +43,9 @@ export const useAppointmentsByRole = (date: string) => {
     }
   );
 };
+
+export const useUpdateAppointmentStatus = () => {
+  return useMutation<{ message: string; results: IAppointment }, Error, IAppointmentRequest>(async (data: IAppointmentRequest) => {
+    return await AppointmentService.updateAppointmentStatus(data);
+  });
+};

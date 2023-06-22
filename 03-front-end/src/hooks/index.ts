@@ -1,4 +1,13 @@
 import { useSignIn, useSignUp, useUserProfile, useUserPatients } from './User';
-import { useAppointments, useAppointmentsForUser, useAppointmentsByRole } from './Appointment';
+import { useAppointments, useAppointmentsForUser, useAppointmentsByRole, useUpdateAppointment } from './Appointment';
 
-export { useSignIn, useSignUp, useAppointments, useUserProfile, useAppointmentsForUser, useAppointmentsByRole, useUserPatients };
+export {
+  useSignIn,
+  useSignUp,
+  useAppointments,
+  useUserProfile,
+  useAppointmentsForUser,
+  useAppointmentsByRole,
+  useUserPatients,
+  useUpdateAppointment,
+};
