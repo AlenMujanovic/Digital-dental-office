@@ -25,6 +25,7 @@ const app = express();
 const UserRoutes = require('./components/user/userRouter');
 const AppointmentRoutes = require('./components/appointment/appointmentRouter');
 const PrescriptionRoutes = require('./components/prescription/prescriptionRouter');
+const ContactUsRoutes = require('./components/contactUs/ContactUsRouter');
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '20mb' }));
@@ -42,7 +43,14 @@ app.use(lusca.xssProtection(true));
 // Whitelisted routes
 app.use(
   expressjwt({ secret: environments.JWT_SECRET, algorithms: ['HS256'] }).unless({
-    path: ['/api/v1/user/signin', '/api/v1/user/signup', '/api/v1/user/refresh-token', '/api/v1/user/forgot-password', /\/apidoc\/?/],
+    path: [
+      '/api/v1/user/signin',
+      '/api/v1/user/signup',
+      '/api/v1/user/refresh-token',
+      '/api/v1/user/forgot-password',
+      '/api/v1/contact',
+      /\/apidoc\/?/,
+    ],
   })
 );
 
@@ -82,6 +90,7 @@ process.on('SIGINT', () => {
 app.use('/api/v1', UserRoutes);
 app.use('/api/v1', AppointmentRoutes);
 app.use('/api/v1', PrescriptionRoutes);
+app.use('/api/v1', ContactUsRoutes);
 
 require('./scripts/appointmentScript');
 
