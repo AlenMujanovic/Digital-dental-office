@@ -48,7 +48,7 @@ const Sidebar = ({ onClose, scrollToSection, handleSignOut, isSessionValid }: Si
             )}
             <Link
               type="button"
-              className="py-2 px-6 bg-[#1cc7c1] hover:bg-opacity-90 text-sm text-white font-bold rounded-lg w-full block text-center"
+              className="py-2 px-6 bg-theme-green hover:bg-opacity-90 text-sm text-white font-bold rounded-lg w-full block text-center"
               to="/signUp">
               Sign Up
             </Link>

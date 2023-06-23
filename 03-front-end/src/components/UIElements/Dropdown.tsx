@@ -30,13 +30,13 @@ const Dropdown = ({ handleSignOut }: DropdownProps) => {
         <img src={userProfile} className="w-10"></img>
       </button>
       <div
-        className={`absolute left-0 z-40 mt-2 rounded border-[.5px] border-light bg-white py-5 shadow-card transition-all ${
+        className={`absolute left-0 z-40 mt-2 rounded border-[.5px] border-light bg-white p-5 shadow-card transition-all ${
           dropdownOpen ? 'top-full opacity-100 visible' : 'top-[110%] invisible opacity-0'
         }`}>
-        <Link to="/dashboard" className="block w-full py-2 px-5 text-base font-semibold text-black hover:bg-[#1cc7c1] rounded">
+        <Link to="/dashboard" className="block w-full py-2 px-5 text-base font-semibold text-black hover:bg-theme-green rounded">
           Dashboard
         </Link>
-        <button onClick={handleSignOut} className="block w-full py-2 px-5 text-base  font-semibold text-black hover:bg-[#1cc7c1] rounded">
+        <button onClick={handleSignOut} className="block w-full py-2 px-5 text-base  font-semibold text-black hover:bg-theme-green rounded">
           Sign out
         </button>
       </div>

@@ -9,6 +9,19 @@ const DashboardSidebarLinks = ({ handleSignOut }: DashboardSidebarLinksProps) =>
     <>
       <ul className="space-y-2 pb-2">
         <li>
+          <Link to="/" className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
+            <svg
+              className="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="m.5 9.5 9-9 9 9" />
+              <path d="m2.5 7.5v8c0 .5522847.44771525 1 1 1h3c.55228475 0 1-.4477153 1-1v-4c0-.5522847.44771525-1 1-1h2c.5522847 0 1 .4477153 1 1v4c0 .5522847.4477153 1 1 1h3c.5522847 0 1-.4477153 1-1v-8" />
+            </svg>
+            <span className="ml-3">Home</span>
+          </Link>
+        </li>
+        <li>
           <Link to="/dashboard" className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
             <svg
               className="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75"

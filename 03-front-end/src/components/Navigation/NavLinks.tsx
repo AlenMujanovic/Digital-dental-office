@@ -95,7 +95,7 @@ const NavLinks = ({ scrollToSection, handleSignOut, isSessionValid }: NavLinksPr
         </Link>
       )}
       <Link
-        className="hidden lg:inline-block py-2 px-6 bg-[#1cc7c1] hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200"
+        className="hidden lg:inline-block py-2 px-6 bg-theme-green hover:bg-opacity-90 text-sm text-white font-bold rounded-xl transition duration-200"
         to="/signUp">
         Sign up
       </Link>

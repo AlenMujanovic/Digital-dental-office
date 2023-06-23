@@ -144,7 +144,7 @@ const DashboardPrescriptions = () => {
                                         <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                                           <button
                                             type="button"
-                                            className="px-4 py-2 bg-[#1cc7c1] text-white rounded-md"
+                                            className="px-4 py-2 bg-theme-green text-white rounded-md"
                                             onClick={() => handleViewPrescription(item._id)}>
                                             View
                                           </button>
@@ -152,14 +152,14 @@ const DashboardPrescriptions = () => {
                                         <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                                           <button
                                             type="button"
-                                            className="px-4 py-2 bg-[#1cc7c1] text-white rounded-md"
+                                            className="px-4 py-2 bg-theme-green text-white rounded-md"
                                             onClick={() => handleOpenModal(item._id)}>
                                             Add Prescription
                                           </button>
 
                                           <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)} title="Add Prescription">
                                             <form onSubmit={handleSubmit(onSubmit)}>
-                                              <div className="mb-6 text-left w-3/6 mx-auto">
+                                              <div className="mb-9 text-left w-3/6 mx-auto">
                                                 <Textarea
                                                   rows={5}
                                                   register={register}

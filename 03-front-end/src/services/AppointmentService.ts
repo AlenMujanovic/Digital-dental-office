@@ -109,7 +109,7 @@ const updateAppointmentStatus = async (data: IAppointmentRequest): Promise<{ mes
   try {
     const { status, _id } = data;
 
-    const response = await fetch(`${API_URL}/appointment/${_id}`, {
+    const response = await fetch(`${API_URL}/appointment/status/${_id}`, {
       method: 'PATCH',
       headers: {
         Accept: 'application/json',
