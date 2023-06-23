@@ -4,9 +4,10 @@ import { DayPicker } from 'react-day-picker';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { DashboardNavbar, LoadingSpinner } from '../components';
-import { useAppointmentsByRole, useUpdateAppointment, useUserPatients, useUserProfile } from '../hooks';
+import { useAppointmentsByRole, useUserPatients, useUserProfile } from '../hooks';
 import { formatTimeRange } from '../utils';
 import { useQueryClient } from '@tanstack/react-query';
+import { useUpdateAppointmentStatus } from '../hooks/Appointment';
 
 type AppointmentStatus = 'Pending' | 'Canceled' | 'Done' | 'Free';
 
@@ -44,7 +45,7 @@ const Dashboard = () => {
   const { data: loggedUser } = useUserProfile();
   const { data: appointments, isFetching } = useAppointmentsByRole(formattedDate || todayDateFormatted);
   const { data: patients } = useUserPatients(loggedUser?.results.role);
-  const { mutate: updateApp } = useUpdateAppointment();
+  const { mutate: updateAppStatus } = useUpdateAppointmentStatus();
 
   const getPendingAppointments = () => {
     const pendingAppointments = appointments?.results?.filter(item => item.status === 'Pending');
@@ -77,7 +78,8 @@ const Dashboard = () => {
   }, [appointments]);
 
   const handleRowSubmit = (status: string, id: string) => {
-    updateApp(
+    console.log(status, id);
+    updateAppStatus(
       {
         _id: id,
         status: status as AppointmentStatus,
@@ -144,6 +146,21 @@ const Dashboard = () => {
               <div className="flex flex-col mt-8">
                 <div className="overflow-x-auto rounded-lg">
                   <div className="align-middle inline-block min-w-full">
+                    {isPopperOpen && (
+                      <FocusTrap
+                        active
+                        focusTrapOptions={{
+                          // initialFocus: false,
+                          allowOutsideClick: false,
+                          clickOutsideDeactivates: true,
+                          // onDeactivate: closePopper,
+                          // fallbackFocus: fallbackFocus,
+                        }}>
+                        <div className="absolute mt-16 bg-white right-4">
+                          <DayPicker mode="single" selected={selected} onSelect={setSelected} showOutsideDays fixedWeeks />
+                        </div>
+                      </FocusTrap>
+                    )}
                     <div className="shadow overflow-hidden sm:rounded-lg">
                       {isFetching ? (
                         <div className="flex justify-center">
@@ -164,21 +181,6 @@ const Dashboard = () => {
                                 </svg>
                               </button>
                             </div>
-                            {isPopperOpen && (
-                              <FocusTrap
-                                active
-                                focusTrapOptions={{
-                                  // initialFocus: false,
-                                  allowOutsideClick: false,
-                                  clickOutsideDeactivates: true,
-                                  // onDeactivate: closePopper,
-                                  // fallbackFocus: fallbackFocus,
-                                }}>
-                                <div className="absolute mt-16 bg-white right-4">
-                                  <DayPicker mode="single" selected={selected} onSelect={setSelected} showOutsideDays fixedWeeks />
-                                </div>
-                              </FocusTrap>
-                            )}
                           </div>
                           <table className="min-w-full divide-y divide-gray-200 bg-white">
                             <thead className="bg-gray-50">
@@ -221,7 +223,7 @@ const Dashboard = () => {
                                             pathname: '/dashboard/prescriptions',
                                             search: `?userId=${item.user._id}`,
                                           }}
-                                          className="bg-[#1cc7c1] py-[10px] px-5 rounded-lg text-white">
+                                          className="bg-theme-green py-[10px] px-5 rounded-lg text-white">
                                           View
                                         </Link>
                                       ) : (

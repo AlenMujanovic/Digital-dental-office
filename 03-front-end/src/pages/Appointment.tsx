@@ -137,7 +137,7 @@ const Appointment = () => {
               <LoadingSpinner noOverlay />
             ) : (
               <div className="flex flex-wrap -m-4 text-center justify-between mb-10">
-                {appointments && appointments.results.length > 1 ? (
+                {appointments && appointments.results.length !== 0 ? (
                   appointments.results
                     .filter(item => item.status === 'Free')
                     .map(item => (

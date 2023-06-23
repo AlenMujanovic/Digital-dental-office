@@ -9,7 +9,7 @@
 
 .rdp {
   --rdp-cell-size: 52px !important;
-  --rdp-accent-color: #1cc7c1 !important;
+  --rdp-accent-color: #0a0a0a21 !important;
   display: flex;
   align-items: center;
   justify-content: center;

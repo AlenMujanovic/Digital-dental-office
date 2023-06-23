@@ -9,7 +9,7 @@ const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
     <ul>
       <li className="mb-1">
         <NavLink
-          className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+          className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded"
           to="#"
           onClick={() => scrollToSection('#home')}>
           Home
@@ -18,7 +18,7 @@ const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
       <ul>
         <li className="mb-1">
           <NavLink
-            className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+            className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded"
             to="#"
             onClick={() => scrollToSection('#services')}>
             Services
@@ -26,7 +26,7 @@ const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
         </li>
         <li className="mb-1">
           <NavLink
-            className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+            className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded"
             to="#"
             onClick={() => scrollToSection('#about')}>
             About
@@ -34,7 +34,7 @@ const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
         </li>
         <li className="mb-1">
           <NavLink
-            className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+            className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded"
             to="#"
             onClick={() => scrollToSection('#reviews')}>
             Reviews
@@ -42,14 +42,14 @@ const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
         </li>
         <li className="mb-1">
           <NavLink
-            className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded"
+            className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded"
             to="#"
             onClick={() => scrollToSection('#contact')}>
             Contact
           </NavLink>
         </li>
         <li className="mb-1">
-          <NavLink className="block p-4 text-sm font-semibold text-black hover:bg-[#1cc7c1] rounded" to="/dashboard">
+          <NavLink className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded" to="/dashboard">
             Dashboard
           </NavLink>
         </li>

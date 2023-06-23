@@ -12,7 +12,7 @@ const SignUp = () => {
     email: Yup.string().required('Email is required').email('Email is invalid'),
     password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
     phone: Yup.string().matches(/^[\\+]?[(]?[0-9]{3}[)]?[-\s\\.]?[0-9]{3}[-\s\\.]?[0-9]{4,6}$/, 'Phone number is not valid'),
-    gender: Yup.string().required().oneOf(['Male', 'Female'], 'Gender must be Male or Female'),
+    gender: Yup.string().required().oneOf(['Male', 'Female'], 'Gender must be selected'),
     address: Yup.string().required('Address is required'),
   });
   const { mutate: signUpUser, isLoading } = useSignUp();
