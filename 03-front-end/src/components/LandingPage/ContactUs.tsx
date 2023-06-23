@@ -1,6 +1,14 @@
+import { FieldErrors, FieldValues, FormSubmitHandler, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 import { Button, Input, Textarea } from '../FormElements';
 
-const ContactUs = () => {
+interface ContactUsProps {
+  onSubmit: SubmitHandler<FieldValues>;
+  handleSubmit: UseFormHandleSubmit<FieldValues, undefined>;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors;
+}
+
+const ContactUs = ({ handleSubmit, onSubmit, register, errors }: ContactUsProps) => {
   return (
     <div
       id="contact"
@@ -14,11 +22,11 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col gap-10">
-            <Input label="Your name" type="text" name="fullName" />
-            <Input label="Your email" type="email" name="email" />
-            <Textarea name="message" rows={5} />
+            <Input label="Your name" type="text" name="fullName" id="name" register={register} errors={errors} />
+            <Input label="Your email" type="email" name="email" id="email" register={register} errors={errors} />
+            <Textarea name="description" rows={5} register={register} errors={errors} label="Your message" />
           </div>
           <Button className="block mx-auto mt-5" type="submit">
             Send Message
