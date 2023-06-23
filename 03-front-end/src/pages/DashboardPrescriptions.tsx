@@ -1,15 +1,25 @@
-import { DashboardNavbar, LoadingSpinner } from '../components';
-import { usePrescriptions } from '../hooks/Prescription';
-import userProfile from '../assets/userProfile.png';
-import { formatDateTime } from '../utils';
-import { useUserPatients, useUserProfile } from '../hooks';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+import userProfile from '../assets/userProfile.png';
+import { Button, DashboardNavbar, LoadingSpinner, Modal, Textarea } from '../components';
+import { useUserPatients, useUserProfile } from '../hooks';
+import { useCreatePrescription, usePrescriptions } from '../hooks/Prescription';
+import { IUser } from '../types';
+import { formatDateTime } from '../utils';
+import { useQueryClient } from '@tanstack/react-query';
 
 const DashboardPrescriptions = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedUserId, setSelectedUserId] = useState<IUser | null | string>(null);
 
   const location = useLocation();
+
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -24,8 +34,48 @@ const DashboardPrescriptions = () => {
   const { data: prescriptions } = usePrescriptions(userId, loggedUser?.results.role);
   const { data: users, isFetching } = useUserPatients(loggedUser?.results.role);
 
-  const handleButtonClick = (userId: string) => {
+  const handleViewPrescription = (userId: string) => {
     setUserId(userId);
+  };
+
+  const validationSchema = Yup.object().shape({
+    description: Yup.string().required('Description is required'),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FieldValues>({
+    resolver: yupResolver(validationSchema),
+    defaultValues: {
+      description: '',
+    },
+  });
+
+  const handleOpenModal = (userId: string) => {
+    setSelectedUserId(userId);
+    setIsModalOpen(true);
+  };
+
+  const { mutate: createPrescription } = useCreatePrescription();
+
+  const onSubmit: SubmitHandler<FieldValues> = ({ description }) => {
+    createPrescription(
+      { description, user: selectedUserId as IUser },
+      {
+        onSuccess(data) {
+          queryClient.invalidateQueries({ queryKey: ['prescriptions', selectedUserId] });
+          toast.success(data.message);
+        },
+        onError(error) {
+          toast.error(error.message);
+        },
+      }
+    );
+    reset();
+    setIsModalOpen(() => false);
   };
 
   return (
@@ -95,14 +145,34 @@ const DashboardPrescriptions = () => {
                                           <button
                                             type="button"
                                             className="px-4 py-2 bg-[#1cc7c1] text-white rounded-md"
-                                            onClick={() => handleButtonClick(item._id)}>
+                                            onClick={() => handleViewPrescription(item._id)}>
                                             View
                                           </button>
                                         </td>
                                         <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                          <button type="button" className="px-4 py-2 bg-[#1cc7c1] text-white rounded-md">
+                                          <button
+                                            type="button"
+                                            className="px-4 py-2 bg-[#1cc7c1] text-white rounded-md"
+                                            onClick={() => handleOpenModal(item._id)}>
                                             Add Prescription
                                           </button>
+
+                                          <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)} title="Add Prescription">
+                                            <form onSubmit={handleSubmit(onSubmit)}>
+                                              <div className="mb-6 text-left w-3/6 mx-auto">
+                                                <Textarea
+                                                  rows={5}
+                                                  register={register}
+                                                  errors={errors}
+                                                  name="description"
+                                                  label="Add description"
+                                                />
+                                              </div>
+                                              <div className="flex justify-center">
+                                                <Button type="submit">Save</Button>
+                                              </div>
+                                            </form>
+                                          </Modal>
                                         </td>
                                       </tr>
                                     ))
@@ -126,35 +196,39 @@ const DashboardPrescriptions = () => {
                   <div className="mb-4 flex items-center justify-between">
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">Prescriptions</h3>
-                      <span className="text-base font-normal text-gray-500">This is a list of your prescriptions</span>
+                      <span className="text-base font-normal text-gray-500">This is a list of prescriptions</span>
                     </div>
                   </div>
                   <div className="p-4 text-gray-600 body-font flex justify-center items-center">
                     <div className="container px-5 pb-24 mx-auto pt-1">
-                      <div className="flex flex-wrap -m-4 text-center justify-between">
-                        {prescriptions?.results.map(item => (
-                          <div className="sm:w-full lg:w-[49%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0" key={item._id}>
-                            <div className="rounded-xl border p-5 shadow-md  bg-white">
-                              <div className="flex w-full items-center justify-between border-b pb-3">
-                                <div className="flex items-center space-x-3">
-                                  <div className="h-8 w-8 rounded-full">
-                                    <img src={userProfile} alt="Avatar user" className="w-10 md:w-16 rounded-full mx-auto" />
+                      {prescriptions?.results && prescriptions.results.length > 0 ? (
+                        <div className="flex flex-wrap -m-4 text-center justify-between">
+                          {prescriptions?.results.map(item => (
+                            <div className="sm:w-full lg:w-[49%] w-full hover:scale-105 duration-500 mt-3 lg:mt-0" key={item._id}>
+                              <div className="rounded-xl border p-5 shadow-md  bg-white my-5">
+                                <div className="flex w-full items-center justify-between border-b pb-3">
+                                  <div className="flex items-center space-x-3">
+                                    <div className="h-8 w-8 rounded-full">
+                                      <img src={userProfile} alt="Avatar user" className="w-10 md:w-16 rounded-full mx-auto" />
+                                    </div>
+                                    <div className="text-lg font-bold text-slate-700">{item.user?.name}</div>
                                   </div>
-                                  <div className="text-lg font-bold text-slate-700">{item.user?.name}</div>
+                                  <div className="flex items-center space-x-8">
+                                    <div className="text-xs text-neutral-500">{formatDateTime(item.createdAt || '')}</div>
+                                  </div>
                                 </div>
-                                <div className="flex items-center space-x-8">
-                                  <div className="text-xs text-neutral-500">{formatDateTime(item.createdAt)}</div>
-                                </div>
-                              </div>
 
-                              <div className="mt-4 mb-6">
-                                <div className="mb-3 text-xl font-bold">Prescription for {item.user?.name}</div>
-                                <div className="text-sm text-neutral-600">{item.description}</div>
+                                <div className="mt-4 mb-6">
+                                  <div className="mb-3 text-xl font-bold">Prescription for {item.user?.name}</div>
+                                  <div className="text-sm text-neutral-600">{item.description}</div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p>No prescriptions</p>
+                      )}
                     </div>
                   </div>
                 </div>

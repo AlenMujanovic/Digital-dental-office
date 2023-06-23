@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { PrescriptionService } from '../services/PrescriptionService';
 import { IPrescription } from '../types';
 
@@ -25,4 +25,10 @@ export const usePrescriptions = (userId?: string, userRole?: string) => {
       enabled: userRole === 'Doctor' || userRole === 'Patient',
     }
   );
+};
+
+export const useCreatePrescription = () => {
+  return useMutation<{ message: string }, Error, IPrescription>(async (data: IPrescription) => {
+    return await PrescriptionService.createPrescription(data);
+  });
 };
