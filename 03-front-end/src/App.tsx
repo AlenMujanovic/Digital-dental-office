@@ -6,11 +6,13 @@ import {
   Home,
   SignUp,
   Appointment,
-  Dashboard,
-  DashboardAppointments,
+
+  // DashboardAppointments,
   DashboardPatients,
   DashboardPrescriptions,
   DashboardAdmin,
+  DashboardAppointmentsAdmin,
+  DashboardAppointments,
 } from './pages';
 
 const App = () => {
@@ -30,14 +32,21 @@ const App = () => {
           }
         />
         <Route
-          path="/dashboard"
+          path="/dashboard/appointments"
           element={
             <RoleGuard allowedRoles={['Patient']}>
-              <Dashboard />
+              <DashboardAppointments />
             </RoleGuard>
           }
         />
-        <Route path="/dashboard/appointments" element={<DashboardAppointments />} />
+        <Route
+          path="/dashboard/appointments/admin"
+          element={
+            <RoleGuard allowedRoles={['Doctor']}>
+              <DashboardAppointmentsAdmin />
+            </RoleGuard>
+          }
+        />
         <Route
           path="/dashboard/patients"
           element={

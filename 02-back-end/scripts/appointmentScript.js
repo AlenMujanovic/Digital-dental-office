@@ -36,6 +36,32 @@ function createAppointmentsForNextMonth() {
   }
 }
 
+function createAppointmentsForCurrentMonth() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const date = new Date(year, month, day);
+    const dayOfWeek = date.getDay();
+
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+      for (let hour = WORKING_HOURS_START; hour < WORKING_HOURS_END; hour++) {
+        const startTimeAndDate = new Date(year, month, day, hour);
+        const endTimeAndDate = new Date(startTimeAndDate.getTime() + MS_PER_HOUR);
+
+        Appointment.create({
+          startTimeAndDate,
+          endTimeAndDate,
+          user: null,
+          status: 'Free',
+        });
+      }
+    }
+  }
+}
+
 function createAppointmentsForTomorrow() {
   const now = new Date();
 
@@ -72,7 +98,7 @@ mongoose.connect(MONGO_DB, {
 });
 mongoose.connection.on('connected', () => {
   console.log(`Mongoose default connection open to ${MONGO_DB}`);
-  // createAppointmentsForNextMonth();
+  // createAppointmentsForCurrentMonth();
 });
 // CONNECTION EVENTS
 // If the connection throws an error

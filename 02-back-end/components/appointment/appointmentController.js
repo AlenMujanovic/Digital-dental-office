@@ -1,7 +1,7 @@
 const error = require('../../middlewares/errorHandling/errorConstants');
 const { Appointment, statuses } = require('../../models');
 
-module.exports.appointments = async (req, res) => {
+module.exports.appointmentsByDate = async (req, res) => {
   const { date } = req.query;
 
   if (Number.isNaN(Date.parse(date)) || new Date(date) < new Date()) {
@@ -118,6 +118,48 @@ module.exports.updateAppointmentStatus = async (req, res) => {
 
   return res.status(200).send({
     message: 'Successfully updated appointment',
+    results,
+  });
+};
+
+module.exports.appointmentsForLast6Months = async (req, res) => {
+  const { _id: userId } = req.user;
+
+  const endDate = new Date();
+  const startDate = new Date(endDate);
+
+  startDate.setMonth(startDate.getMonth() - 6);
+
+  const endDateString = endDate.toISOString().slice(0, 10);
+  const startDateString = startDate.toISOString().slice(0, 10);
+
+  const results = await Appointment.find({
+    user: userId,
+    startTimeAndDate: { $gte: startDateString, $lt: endDateString },
+  })
+    .populate('user')
+    .lean();
+
+  return res.status(200).send({
+    message: 'Successfully returned list of appointments for last 6 months',
+    results,
+  });
+};
+
+module.exports.upcomingAppointments = async (req, res) => {
+  const { _id: userId } = req.user;
+
+  const now = new Date();
+
+  const results = await Appointment.find({
+    user: userId,
+    startTimeAndDate: { $gte: now },
+  })
+    .populate('user')
+    .lean();
+
+  return res.status(200).send({
+    message: 'Successfully returned list of upcoming appointments',
     results,
   });
 };

@@ -43,9 +43,15 @@ const DashboardAdmin = () => {
   }
 
   const { data: loggedUser } = useUserProfile();
-  const { data: appointments, isFetching } = useAppointmentsByRole(formattedDate || todayDateFormatted);
+  const { data: appointments, isFetching, error } = useAppointmentsByRole(formattedDate || todayDateFormatted);
   const { data: patients } = useUserPatients(loggedUser?.results.role);
   const { mutate: updateAppStatus } = useUpdateAppointmentStatus();
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+    }
+  }, [error]);
 
   const getPendingAppointments = () => {
     const pendingAppointments = appointments?.results?.filter(item => item.status === 'Pending');
@@ -78,7 +84,6 @@ const DashboardAdmin = () => {
   }, [appointments]);
 
   const handleRowSubmit = (status: string, id: string) => {
-    console.log(status, id);
     updateAppStatus(
       {
         _id: id,

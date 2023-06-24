@@ -27,7 +27,6 @@ const Home = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = ({ name, email, description }) => {
-    console.log(name, email, description);
     signUpUser(
       { name, email, description },
       {

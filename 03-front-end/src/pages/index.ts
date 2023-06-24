@@ -4,7 +4,7 @@ import Home from './Home';
 import SignUp from './SignUp';
 import Appointment from './Appointment';
 import DashboardAdmin from './DashboardAdmin';
-import Dashboard from './Dashboard';
+import DashboardAppointmentsAdmin from './DashboardAppointmentsAdmin';
 import DashboardAppointments from './DashboardAppointments';
 import DashboardPatients from './DashboardPatients';
 import DashboardPrescriptions from './DashboardPrescriptions';
@@ -16,8 +16,8 @@ export {
   SignUp,
   Appointment,
   DashboardAdmin,
+  DashboardAppointmentsAdmin,
   DashboardAppointments,
   DashboardPatients,
   DashboardPrescriptions,
-  Dashboard,
 };

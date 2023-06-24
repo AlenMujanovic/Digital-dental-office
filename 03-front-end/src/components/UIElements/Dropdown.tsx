@@ -40,7 +40,9 @@ const Dropdown = ({ handleSignOut }: DropdownProps) => {
             Dashboard
           </Link>
         ) : (
-          <Link to="/dashboard" className="block w-full py-2 px-5 text-base font-semibold text-black hover:bg-theme-green rounded">
+          <Link
+            to="/dashboard/appointments"
+            className="block w-full py-2 px-5 text-base font-semibold text-black hover:bg-theme-green rounded">
             Dashboard
           </Link>
         )}
