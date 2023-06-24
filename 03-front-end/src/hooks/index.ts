@@ -1,4 +1,4 @@
-import { useSignIn, useSignUp, useUserProfile, useUserPatients } from './User';
+import { useSignIn, useSignUp, useUserProfile, useUserPatients, useEditUserProfile } from './User';
 import {
   useAppointmentsByDate,
   useAppointmentsForUser,
@@ -19,4 +19,5 @@ export {
   useUpdateAppointment,
   useAppointmentsForLast6Months,
   useUpcomingAppointments,
+  useEditUserProfile,
 };

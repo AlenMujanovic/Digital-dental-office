@@ -6,13 +6,12 @@ import {
   Home,
   SignUp,
   Appointment,
-
-  // DashboardAppointments,
   DashboardPatients,
   DashboardPrescriptions,
   DashboardAdmin,
   DashboardAppointmentsAdmin,
   DashboardAppointments,
+  DashboardUserProfile,
 } from './pages';
 
 const App = () => {
@@ -56,6 +55,7 @@ const App = () => {
           }
         />
         <Route path="/dashboard/prescriptions" element={<DashboardPrescriptions />} />
+        <Route path="/dashboard/user/profile" element={<DashboardUserProfile />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
