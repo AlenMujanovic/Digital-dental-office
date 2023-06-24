@@ -1,8 +1,9 @@
 import { DayPicker } from 'react-day-picker';
 import { DashboardNavbar, LoadingSpinner } from '../components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { formatTimeRange } from '../utils';
 import { useAppointmentsByRole } from '../hooks';
+import { toast } from 'react-toastify';
 
 const DashboardAppointments = () => {
   const [selected, setSelected] = useState<Date>();
@@ -24,7 +25,13 @@ const DashboardAppointments = () => {
     footer = <p>You picked {formattedDateFooter}.</p>;
   }
 
-  const { data: appointments, isFetching } = useAppointmentsByRole(formattedDate);
+  const { data: appointments, isFetching, error } = useAppointmentsByRole(formattedDate);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+    }
+  }, [error]);
 
   return (
     <>

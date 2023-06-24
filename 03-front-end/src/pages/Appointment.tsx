@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Footer, LoadingSpinner, Navbar } from '../components';
 import { DayPicker } from 'react-day-picker';
 import { toast } from 'react-toastify';
@@ -34,7 +34,13 @@ const Appointment = () => {
     return day < today;
   };
 
-  const { data: appointments, isFetching, isError, error } = useAppointmentsByDate(formattedDate);
+  const { data: appointments, isFetching, error } = useAppointmentsByDate(formattedDate);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+    }
+  }, [error]);
 
   const { mutate: updateApp } = useUpdateAppointment();
 
@@ -56,10 +62,6 @@ const Appointment = () => {
       }
     );
   };
-
-  if (isError) {
-    toast.error(error.message);
-  }
 
   return (
     <>

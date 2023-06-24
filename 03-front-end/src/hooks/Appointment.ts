@@ -8,6 +8,7 @@ export const useAppointmentsByDate = (date: string) => {
     async () => {
       return await AppointmentService.appointmentsByDate(date);
     },
+
     {
       enabled: !!date,
     }

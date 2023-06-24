@@ -1,10 +1,21 @@
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { DashboardNavbar, LoadingSpinner } from '../components';
 import { useAppointmentsForLast6Months, useUpcomingAppointments } from '../hooks';
 import { formatTimeRange } from '../utils';
 
 const DashboardAppointments = () => {
-  const { data: recentAppointments, isFetching } = useAppointmentsForLast6Months();
-  const { data: upcomingAppointments, isFetching: isFetchingUpcoming } = useUpcomingAppointments();
+  const { data: recentAppointments, isFetching, error } = useAppointmentsForLast6Months();
+  const { data: upcomingAppointments, isFetching: isFetchingUpcoming, error: upcomingAppError } = useUpcomingAppointments();
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+    }
+    if (upcomingAppError) {
+      toast.error(upcomingAppError.message);
+    }
+  }, [error, upcomingAppError]);
 
   return (
     <>

@@ -31,8 +31,17 @@ const DashboardPrescriptions = () => {
   }, [location.search]);
 
   const { data: loggedUser } = useUserProfile();
-  const { data: prescriptions } = usePrescriptions(userId, loggedUser?.results.role);
-  const { data: users, isFetching } = useUserPatients(loggedUser?.results.role);
+  const { data: prescriptions, error } = usePrescriptions(userId, loggedUser?.results.role);
+  const { data: users, isFetching, error: errorPatients } = useUserPatients(loggedUser?.results.role);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+    }
+    if (errorPatients) {
+      toast.error(errorPatients.message);
+    }
+  }, [error, errorPatients]);
 
   const handleViewPrescription = (userId: string) => {
     setUserId(userId);

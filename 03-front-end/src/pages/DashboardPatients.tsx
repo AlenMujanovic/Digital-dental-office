@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { DashboardNavbar, LoadingSpinner } from '../components';
 import { useUserPatients, useUserProfile } from '../hooks';
 import { toast } from 'react-toastify';
@@ -6,10 +7,11 @@ const DashboardPatients = () => {
   const { data: loggedUser } = useUserProfile();
   const { data: users, isFetching, error } = useUserPatients(loggedUser?.results.role);
 
-  if (error) {
-    console.log(error);
-    // toast.error(error.message);
-  }
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+    }
+  }, [error]);
 
   return (
     <>
