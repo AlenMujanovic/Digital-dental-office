@@ -28,7 +28,7 @@ const ContactUs = ({ handleSubmit, onSubmit, register, errors }: ContactUsProps)
             <Input label="Your email" type="email" name="email" id="email" register={register} errors={errors} />
             <Textarea name="description" rows={5} register={register} errors={errors} label="Your message" />
           </div>
-          <Button className="block mx-auto mt-5" type="submit">
+          <Button className="block mx-auto mt-10" type="submit">
             Send Message
           </Button>
         </form>

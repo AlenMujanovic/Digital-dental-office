@@ -25,7 +25,7 @@ const app = express();
 const UserRoutes = require('./components/user/userRouter');
 const AppointmentRoutes = require('./components/appointment/appointmentRouter');
 const PrescriptionRoutes = require('./components/prescription/prescriptionRouter');
-const ContactUsRoutes = require('./components/contactUs/ContactUsRouter');
+const ContactUsRoutes = require('./components/contactUs/contactUsRouter');
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '20mb' }));

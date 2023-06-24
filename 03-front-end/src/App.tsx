@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { AuthGuard } from './components';
+import { AuthGuard, RoleGuard } from './components';
 import {
   NotFound,
   SignIn,
@@ -10,6 +10,7 @@ import {
   DashboardAppointments,
   DashboardPatients,
   DashboardPrescriptions,
+  DashboardAdmin,
 } from './pages';
 
 const App = () => {
@@ -20,9 +21,31 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route element={<AuthGuard />}>
         <Route path="/appointment" element={<Appointment />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard/admin"
+          element={
+            <RoleGuard allowedRoles={['Doctor']}>
+              <DashboardAdmin />
+            </RoleGuard>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <RoleGuard allowedRoles={['Patient']}>
+              <Dashboard />
+            </RoleGuard>
+          }
+        />
         <Route path="/dashboard/appointments" element={<DashboardAppointments />} />
-        <Route path="/dashboard/patients" element={<DashboardPatients />} />
+        <Route
+          path="/dashboard/patients"
+          element={
+            <RoleGuard allowedRoles={['Doctor']}>
+              <DashboardPatients />
+            </RoleGuard>
+          }
+        />
         <Route path="/dashboard/prescriptions" element={<DashboardPrescriptions />} />
       </Route>
       <Route path="*" element={<NotFound />} />

@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom';
+import { SessionService } from '../../services';
 
 interface SidebarLinksProps {
   scrollToSection(sectionId: string): void;
 }
 
 const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
+  const user = SessionService.getProfileFromStorage();
+
   return (
     <ul>
       <li className="mb-1">
@@ -49,9 +52,15 @@ const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
           </NavLink>
         </li>
         <li className="mb-1">
-          <NavLink className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded" to="/dashboard">
-            Dashboard
-          </NavLink>
+          {user?.role === 'Doctor' ? (
+            <NavLink className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded" to="/dashboard/admin">
+              Dashboard
+            </NavLink>
+          ) : (
+            <NavLink className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded" to="/dashboard">
+              Dashboard
+            </NavLink>
+          )}
         </li>
       </ul>
     </ul>
