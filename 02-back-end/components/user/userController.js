@@ -113,19 +113,22 @@ module.exports.resetPassword = async (req, res) => {
 };
 
 module.exports.changePassword = async (req, res) => {
-  const { oldPassword, newPassword, newPasswordConfirm } = req.body;
+  const { oldPassword, newPassword, confirmNewPassword } = req.body;
   const { _id } = req.user;
 
   if (!oldPassword || !newPassword) {
     throw new Error(error.MISSING_PARAMETERS);
   }
 
-  if (newPassword !== newPasswordConfirm) throw new Error(error.INVALID_VALUE);
+  if (newPassword !== confirmNewPassword) throw new Error(error.INVALID_VALUE);
 
   const user = await User.findOne({ _id }, { password: 1 }).lean();
 
   if (!bcrypt.compareSync(oldPassword, user.password)) {
     throw new Error(error.CREDENTIALS_ERROR);
+  }
+  if (newPassword !== confirmNewPassword) {
+    throw new Error(error.INVALID_VALUE);
   }
 
   const password = bcrypt.hashSync(newPassword, 10);
@@ -133,7 +136,6 @@ module.exports.changePassword = async (req, res) => {
 
   return res.status(200).send({
     message: 'Password successfully updated',
-    token: issueNewToken(user),
   });
 };
 
@@ -142,6 +144,32 @@ module.exports.getProfile = async (req, res) =>
     message: 'Successfully returned profile',
     results: req.user,
   });
+
+module.exports.editProfile = async (req, res) => {
+  const { name, address, phone } = req.body;
+
+  if (!name || !address || !phone) {
+    throw new Error(error.MISSING_PARAMETERS);
+  }
+
+  const { _id: userId } = req.user;
+
+  const results = await User.findOneAndUpdate(
+    { _id: userId },
+    {
+      name,
+      address,
+
+      phone,
+    },
+    { new: true, omitUndefined: true }
+  ).lean();
+
+  return res.status(200).send({
+    message: 'Successfully updated profile',
+    results,
+  });
+};
 
 module.exports.refreshToken = async (req, res) => {
   const { token } = req.body;

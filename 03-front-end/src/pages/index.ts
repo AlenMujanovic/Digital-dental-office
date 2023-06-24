@@ -8,6 +8,7 @@ import DashboardAppointmentsAdmin from './DashboardAppointmentsAdmin';
 import DashboardAppointments from './DashboardAppointments';
 import DashboardPatients from './DashboardPatients';
 import DashboardPrescriptions from './DashboardPrescriptions';
+import DashboardUserProfile from './DashboardUserProfile';
 
 export {
   NotFound,
@@ -20,4 +21,5 @@ export {
   DashboardAppointments,
   DashboardPatients,
   DashboardPrescriptions,
+  DashboardUserProfile,
 };

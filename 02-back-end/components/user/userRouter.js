@@ -13,6 +13,7 @@ router
   // .post('/user/reset-password/:resetToken', catchAsyncError(UserController.resetPassword))
   .get('/user/logged-user', permissionAccess(), catchAsyncError(UserController.getProfile))
   .post('/user/refresh-token', catchAsyncError(UserController.refreshToken))
-  .get('/user/patient', permissionAccess('Doctor'), catchAsyncError(UserController.getPatients));
+  .get('/user/patient', permissionAccess('Doctor'), catchAsyncError(UserController.getPatients))
+  .patch('/user/edit-profile', permissionAccess(), catchAsyncError(UserController.editProfile));
 
 module.exports = router;
