@@ -11,7 +11,7 @@ const Home = () => {
     email: Yup.string().required('Email is required').email('Email is invalid'),
     description: Yup.string().required('Description is required'),
   });
-  const { mutate: signUpUser, isLoading } = useContact();
+  const { mutate: signUpUser } = useContact();
 
   const {
     register,
@@ -32,10 +32,10 @@ const Home = () => {
       { name, email, description },
       {
         onSuccess(data) {
-          // toast.success(data.message);
+          toast.success(data.message);
         },
         onError(error) {
-          // toast.error(error.message);
+          toast.error(error.message);
         },
       }
     );

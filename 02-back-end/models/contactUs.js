@@ -8,7 +8,6 @@ const ContactUsSchema = new Schema(
     name: { type: String, trim: true, required: true },
     email: {
       type: String,
-      unique: true,
       lowercase: true,
       trim: true,
       match: [emailRegExp, 'Invalid email'],

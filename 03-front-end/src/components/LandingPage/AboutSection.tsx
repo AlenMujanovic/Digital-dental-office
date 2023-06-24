@@ -1,7 +1,10 @@
 import { Button } from '../FormElements';
 import checkUp from '../../assets/checkUp.png';
+import { useNavigate } from 'react-router-dom';
 
 const AboutSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="about" className="p-4 overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
       <div className="container mx-auto">
@@ -111,7 +114,7 @@ const AboutSection = () => {
                 A domain name is one of the first steps to establishing your brand. Secure a consistent brand image with a domain name that
                 matches your business.
               </p>
-              <Button type="button" className="inline-flex">
+              <Button type="button" className="inline-flex" onClick={() => navigate('/appointment')}>
                 Learn More
               </Button>
             </div>
