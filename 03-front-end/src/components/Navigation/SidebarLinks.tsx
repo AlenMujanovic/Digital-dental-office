@@ -57,7 +57,7 @@ const SidebarLinks = ({ scrollToSection }: SidebarLinksProps) => {
               Dashboard
             </NavLink>
           ) : (
-            <NavLink className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded" to="/dashboard">
+            <NavLink className="block p-4 text-sm font-semibold text-black hover:bg-theme-green rounded" to="/dashboard/appointments">
               Dashboard
             </NavLink>
           )}

@@ -1,13 +1,22 @@
 import { useSignIn, useSignUp, useUserProfile, useUserPatients } from './User';
-import { useAppointments, useAppointmentsForUser, useAppointmentsByRole, useUpdateAppointment } from './Appointment';
+import {
+  useAppointmentsByDate,
+  useAppointmentsForUser,
+  useAppointmentsByRole,
+  useUpdateAppointment,
+  useAppointmentsForLast6Months,
+  useUpcomingAppointments,
+} from './Appointment';
 
 export {
   useSignIn,
   useSignUp,
-  useAppointments,
+  useAppointmentsByDate,
   useUserProfile,
   useAppointmentsForUser,
   useAppointmentsByRole,
   useUserPatients,
   useUpdateAppointment,
+  useAppointmentsForLast6Months,
+  useUpcomingAppointments,
 };
