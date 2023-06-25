@@ -31,16 +31,24 @@ const getEnvVariables = () => {
       JWT_SECRET: environmentVariables.JWT_SECRET,
     };
   }
+
+  if (environmentVariables.NODE_ENV === 'production') {
+    return {
+      NODE_ENV: environmentVariables.NODE_ENV,
+      PORT: environmentVariables.PORT,
+      JWT_SECRET: environmentVariables.JWT_SECRET,
+      MONGO_DB: environmentVariables.MONGO_DB,
+    };
+  }
+
   return environmentVariables;
 };
 
 // Check for missing environment variables
-Object
-  .entries(getEnvVariables())
-  .forEach(([key, value]) => {
-    if (!value) {
-      throw new Error(`Missing ${key} environment variable`);
-    }
-  });
+Object.entries(getEnvVariables()).forEach(([key, value]) => {
+  if (!value) {
+    throw new Error(`Missing ${key} environment variable`);
+  }
+});
 
 module.exports = getEnvVariables();

@@ -134,6 +134,7 @@ package-lock.json
 .eslintrc.json
 .vscode/
 config/environments/development.env
+config/environments/production.env
 !config/environments/test.env
 .nvmrc
 
