@@ -52,7 +52,7 @@ const Appointment = () => {
         type: type,
       },
       {
-        onSuccess: data => {
+        onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: ['appointments'] });
           queryClient.invalidateQueries({ queryKey: ['upcomingAppointments'] });
           toast.success('Successfully booked appointment');
