@@ -2,17 +2,16 @@ import { Link, NavLink } from 'react-router-dom';
 import Dropdown from '../UIElements/Dropdown';
 
 interface NavLinksProps {
-  scrollToSection(sectionId: string): void;
   handleSignOut: () => void;
   isSessionValid: boolean | undefined;
 }
 
-const NavLinks = ({ scrollToSection, handleSignOut, isSessionValid }: NavLinksProps) => {
+const NavLinks = ({ handleSignOut, isSessionValid }: NavLinksProps) => {
   return (
     <>
       <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
         <li>
-          <NavLink to="#" className="text-sm text-gray-400 hover:text-gray-500" onClick={() => scrollToSection('#home')}>
+          <NavLink to="/#home" className="text-sm text-gray-400 hover:text-gray-500">
             Home
           </NavLink>
         </li>
@@ -27,7 +26,7 @@ const NavLinks = ({ scrollToSection, handleSignOut, isSessionValid }: NavLinksPr
           </svg>
         </li>
         <li>
-          <NavLink to="#" className="text-sm text-black font-bold" onClick={() => scrollToSection('#services')}>
+          <NavLink to="/#services" className="text-sm text-black font-bold">
             Services
           </NavLink>
         </li>
@@ -42,7 +41,7 @@ const NavLinks = ({ scrollToSection, handleSignOut, isSessionValid }: NavLinksPr
           </svg>
         </li>
         <li>
-          <NavLink to="#" className="text-sm text-black font-bold" onClick={() => scrollToSection('#about')}>
+          <NavLink to="/#about" className="text-sm text-black font-bold">
             About
           </NavLink>
         </li>
@@ -57,7 +56,7 @@ const NavLinks = ({ scrollToSection, handleSignOut, isSessionValid }: NavLinksPr
           </svg>
         </li>
         <li>
-          <NavLink to="#" className="text-sm text-black font-bold" onClick={() => scrollToSection('#reviews')}>
+          <NavLink to="/#reviews" className="text-sm text-black font-bold">
             Reviews
           </NavLink>
         </li>
@@ -73,7 +72,7 @@ const NavLinks = ({ scrollToSection, handleSignOut, isSessionValid }: NavLinksPr
           </svg>
         </li>
         <li>
-          <NavLink to="#" className="text-sm text-black font-bold" onClick={() => scrollToSection('#contact')}>
+          <NavLink to="/#contact" className="text-sm text-black font-bold">
             Contact
           </NavLink>
         </li>

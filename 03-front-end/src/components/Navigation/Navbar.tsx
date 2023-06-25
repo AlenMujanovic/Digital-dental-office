@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import NavLinks from './NavLinks';
 import Sidebar from './Sidebar';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import flouride from '../../assets/flouride.png';
 import { SessionService } from '../../services';
 import { useQueryClient } from '@tanstack/react-query';
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [isSessionValid, setSessionValid] = useState<boolean | undefined>(false);
 
+  const location = useLocation();
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -17,6 +18,18 @@ const Navbar = () => {
       setSessionValid(true);
     }
   }, [setSessionValid]);
+
+  useEffect(() => {
+    const sectionId = location.hash;
+
+    if (sectionId) {
+      const element = document.querySelector(sectionId);
+
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
 
   const handleSignOut = async () => {
     queryClient.removeQueries();
@@ -30,14 +43,6 @@ const Navbar = () => {
 
   const handleCloseClick = () => {
     setMenuOpen(false);
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.querySelector(sectionId);
-
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (
@@ -54,16 +59,9 @@ const Navbar = () => {
         </button>
       </div>
       <nav className={`${menuOpen ? '' : 'hidden'} absolute top-full left-0 w-full lg:static lg:w-auto lg:flex`}>
-        <NavLinks scrollToSection={scrollToSection} handleSignOut={handleSignOut} isSessionValid={isSessionValid} />
+        <NavLinks handleSignOut={handleSignOut} isSessionValid={isSessionValid} />
       </nav>
-      {menuOpen && (
-        <Sidebar
-          onClose={handleCloseClick}
-          scrollToSection={scrollToSection}
-          handleSignOut={handleSignOut}
-          isSessionValid={isSessionValid}
-        />
-      )}
+      {menuOpen && <Sidebar onClose={handleCloseClick} handleSignOut={handleSignOut} isSessionValid={isSessionValid} />}
     </header>
   );
 };

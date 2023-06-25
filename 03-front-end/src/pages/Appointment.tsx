@@ -44,16 +44,17 @@ const Appointment = () => {
 
   const { mutate: updateApp } = useUpdateAppointment();
 
-  const updateAppointment = (appointmentId: string) => {
+  const updateAppointment = (appointmentId: string, type: string) => {
     updateApp(
       {
         _id: appointmentId,
         status: 'Pending',
-        type: 'Test',
+        type: type,
       },
       {
         onSuccess: data => {
           queryClient.invalidateQueries({ queryKey: ['appointments'] });
+          queryClient.invalidateQueries({ queryKey: ['upcomingAppointments'] });
           toast.success('Successfully booked appointment');
         },
         onError: error => {
@@ -150,7 +151,10 @@ const Appointment = () => {
                             <p className="text-md m-1 text-black font-semibold">
                               {formatTimeRange(item.startTimeAndDate, item.endTimeAndDate)}
                             </p>
-                            <Button type="button" className="mt-2 text-sm sm:text-base" onClick={() => updateAppointment(item._id)}>
+                            <Button
+                              type="button"
+                              className="mt-2 text-sm sm:text-base"
+                              onClick={() => updateAppointment(item._id, item.type)}>
                               BOOK APPOINTMENT
                             </Button>
                           </div>

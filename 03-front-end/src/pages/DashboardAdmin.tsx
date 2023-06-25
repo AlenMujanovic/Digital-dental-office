@@ -242,7 +242,10 @@ const DashboardAdmin = () => {
                                           className="p-2 border w-full"
                                           value={statusList[index]}
                                           onChange={event => handleStatusChange(event, index)}>
-                                          {item.status !== statusList[index] && <option value={item.status}>{item.status}</option>}
+                                          {item.status !== statusList[index] &&
+                                            !['Canceled', 'Done', 'Pending', 'Free'].includes(item.status) && (
+                                              <option value={item.status}>{item.status}</option>
+                                            )}
                                           <option value="Canceled">Canceled</option>
                                           <option value="Done">Done</option>
                                           <option value="Pending">Pending</option>

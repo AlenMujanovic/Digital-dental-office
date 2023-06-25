@@ -3,12 +3,11 @@ import flouride from '../../assets/flouride.png';
 import { Link } from 'react-router-dom';
 interface SidebarProps {
   onClose: () => void;
-  scrollToSection(sectionId: string): void;
   handleSignOut: () => void;
   isSessionValid: boolean | undefined;
 }
 
-const Sidebar = ({ onClose, scrollToSection, handleSignOut, isSessionValid }: SidebarProps) => {
+const Sidebar = ({ onClose, handleSignOut, isSessionValid }: SidebarProps) => {
   return (
     <>
       <div className="navbar-backdrop fixed inset-0  opacity-25" onClick={onClose} />
@@ -29,7 +28,7 @@ const Sidebar = ({ onClose, scrollToSection, handleSignOut, isSessionValid }: Si
           </button>
         </div>
         <div>
-          <SidebarLinks scrollToSection={scrollToSection} />
+          <SidebarLinks />
         </div>
         <div className="mt-auto">
           <div className="pt-6">

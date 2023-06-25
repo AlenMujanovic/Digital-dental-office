@@ -3,7 +3,7 @@
 
 const cron = require('node-cron');
 const mongoose = require('mongoose');
-const { Appointment } = require('../models/appointment');
+const { Appointment, types } = require('../models/appointment');
 const { MONGO_DB } = require('../config/environments');
 
 const MS_PER_HOUR = 1000 * 60 * 60;
@@ -25,11 +25,16 @@ function createAppointmentsForNextMonth() {
         const startTimeAndDate = new Date(year, month, day, hour);
         const endTimeAndDate = new Date(startTimeAndDate.getTime() + MS_PER_HOUR);
 
+        // Select a random type from the types array
+        const randomTypeIndex = Math.floor(Math.random() * types.length);
+        const type = types[randomTypeIndex];
+
         Appointment.create({
           startTimeAndDate,
           endTimeAndDate,
           user: null,
           status: 'Free',
+          type,
         });
       }
     }
@@ -51,11 +56,16 @@ function createAppointmentsForCurrentMonth() {
         const startTimeAndDate = new Date(year, month, day, hour);
         const endTimeAndDate = new Date(startTimeAndDate.getTime() + MS_PER_HOUR);
 
+        // Select a random type from the types array
+        const randomTypeIndex = Math.floor(Math.random() * types.length);
+        const type = types[randomTypeIndex];
+
         Appointment.create({
           startTimeAndDate,
           endTimeAndDate,
           user: null,
           status: 'Free',
+          type,
         });
       }
     }
@@ -73,11 +83,16 @@ function createAppointmentsForTomorrow() {
     const startTimeAndDate = new Date(year, month, day, hour);
     const endTimeAndDate = new Date(startTimeAndDate.getTime() + MS_PER_HOUR);
 
+    // Select a random type from the types array
+    const randomTypeIndex = Math.floor(Math.random() * types.length);
+    const type = types[randomTypeIndex];
+
     Appointment.create({
       startTimeAndDate,
       endTimeAndDate,
       user: null,
       status: 'Free',
+      type,
     });
   }
 }

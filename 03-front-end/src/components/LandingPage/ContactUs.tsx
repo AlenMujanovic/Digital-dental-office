@@ -1,4 +1,4 @@
-import { FieldErrors, FieldValues, FormSubmitHandler, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, FieldValues, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 import { Button, Input, Textarea } from '../FormElements';
 
 interface ContactUsProps {
