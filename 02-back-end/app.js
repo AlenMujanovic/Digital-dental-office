@@ -92,6 +92,7 @@ app.use('/api/v1', AppointmentRoutes);
 app.use('/api/v1', PrescriptionRoutes);
 app.use('/api/v1', ContactUsRoutes);
 
+require('./scripts/keepServerAwakeScript');
 require('./scripts/appointmentScript');
 
 app.use(ErrorHandler());

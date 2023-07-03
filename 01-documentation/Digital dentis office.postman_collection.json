@@ -1,0 +1,1993 @@
+{
+	"info": {
+		"_postman_id": "102b9472-6bf4-4b44-9f32-08ffbe6b2fe4",
+		"name": "Digital dentis office",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22895243"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Alen Mujanovic\",\n    \"email\" : \"test@gmail.com\" ,\n    \"password\" : \"test1234\",\n    \"phone\" : \"381611111122\",\n    \"gender\" : \"Male\",\n    \"address\" : \"test adresa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign Up",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"Alen Mujanovic\",\n    \"email\" : \"test@gmail.com\" ,\n    \"password\" : \"test1234\",\n    \"phone\" : \"381611111122\",\n    \"gender\" : \"Male\",\n    \"address\" : \"test adresa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/user/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-Z72JCzuZlZaWbjUQT8tRhWBoX2U\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 May 2023 14:29:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully signed up\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"test@gmail.com\",\n    \"password\":\"test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/user/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign In",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"test@gmail.com\",\n    \"password\":\"test1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/user/signin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "280"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"118-vqW7eGPU8+BrzY8fAfKNafl7Y7w\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 May 2023 14:36:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully signed in\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZhMmFiNDY0ZTRiY2QwOGY2NzNmZDQiLCJpYXQiOjE2ODQ2Nzk4MDIsImV4cCI6MTY4NDcyMzAwMn0.MvSiIn8wahGDxnXLtMpZcExLb94J2yT5wGtJuZifX8g\",\n    \"results\": {\n        \"_id\": \"646a2ab464e4bcd08f673fd4\",\n        \"isActive\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Change password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\" : \"test1234\",\n    \"newPassword\" : \"test12345\",\n    \"confirmNewPassword\" : \"test12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/user/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oldPassword\" : \"test123\",\n    \"newPassword\" : \"test1234\",\n    \"newPasswordConfirm\" : \"test1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/user/change-password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"change-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "226"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e2-jurVaKhuvn8v5AqXTyC0S79zNnk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 May 2023 15:12:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Password successfully updated\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZhMmFiNDY0ZTRiY2QwOGY2NzNmZDQiLCJpYXQiOjE2ODQ2ODE5MzcsImV4cCI6MTY4NDcyNTEzN30.fnT2yc6OAJyc7RnCvjWl9m8ooubBPWxpH4xnZB90OeY\"\n}"
+						}
+					]
+				},
+				{
+					"name": "User profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/user/logged-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"logged-user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/user/logged-user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"logged-user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "320"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"140-wJg6Gp8icGMmKEvAOxepWjGorsY\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 09:56:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully returned profile\",\n    \"results\": {\n        \"_id\": \"646a2ab464e4bcd08f673fd4\",\n        \"name\": \"Alen Mujanovic1\",\n        \"email\": \"test@gmail.com\",\n        \"isActive\": true,\n        \"phone\": \"381611111122\",\n        \"gender\": \"Male\",\n        \"address\": \"test adresa\",\n        \"role\": \"Patient\",\n        \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n        \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Patient users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/user/patient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"patient"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patient users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/user/patient",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"patient"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "599"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"257-t5rUd2BHXEq/5B8ZSxOYAaceRWo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 16 Jun 2023 13:54:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully returned list of patients\",\n    \"results\": [\n        {\n            \"_id\": \"646a2ab464e4bcd08f673fd4\",\n            \"name\": \"Alen Mujanovic1\",\n            \"email\": \"test@gmail.com\",\n            \"isActive\": true,\n            \"phone\": \"381611111122\",\n            \"gender\": \"Male\",\n            \"address\": \"test adresa\",\n            \"role\": \"Patient\",\n            \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n            \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64779f0c4debb3bf0b277bdc\",\n            \"name\": \"asdasdasd\",\n            \"email\": \"asdasd@gmail.com\",\n            \"isActive\": true,\n            \"phone\": \"003811111111\",\n            \"gender\": \"Female\",\n            \"address\": \"asdfasdfasdfas\",\n            \"role\": \"Patient\",\n            \"createdAt\": \"2023-05-31T19:25:00.527Z\",\n            \"updatedAt\": \"2023-05-31T19:25:00.527Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZhMmFiNDY0ZTRiY2QwOGY2NzNmZDQiLCJpYXQiOjE2ODc1NDYwMTAsImV4cCI6MTY4NzU0NjAxNX0.pf4Cmh1_lcKDQmy4qaq--1bBI5QLK9A6T6eRB9orgBk\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/user/refresh-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZhMmFiNDY0ZTRiY2QwOGY2NzNmZDQiLCJpYXQiOjE2ODc1NDYwMTAsImV4cCI6MTY4NzU0NjAxNX0.pf4Cmh1_lcKDQmy4qaq--1bBI5QLK9A6T6eRB9orgBk\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/user/refresh-token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "225"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e1-rPp7wRN9g8kC/eILFWYP2UQ1nj4\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Jun 2023 18:47:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully refreshed token\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDZhMmFiNDY0ZTRiY2QwOGY2NzNmZDQiLCJpYXQiOjE2ODc1NDYwNDUsImV4cCI6MTY4NzU0NjA1MH0.Y5f6LR6worfk6ie1vTFLuAT3G2HZTb1Y0AKC6HrAjqI\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit user profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Test change profile\",\n    \"address\":\"Test adresa 123\",\n    \"phone\":\"123123123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/user/edit-profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"edit-profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Edit user profile",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Test change profile\",\n    \"address\":\"Test adresa 123\",\n    \"phone\":\"123123123123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/user/edit-profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"edit-profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "327"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"147-L1hecfSHQwxaBJZRl1WM7FiM0kQ\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Jun 2023 17:51:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully updated profile\",\n    \"results\": {\n        \"_id\": \"646a2ab464e4bcd08f673fd4\",\n        \"name\": \"Test change profile\",\n        \"email\": \"test@gmail.com\",\n        \"isActive\": true,\n        \"phone\": \"123123123123\",\n        \"gender\": \"Male\",\n        \"address\": \"Test adresa 123\",\n        \"role\": \"Patient\",\n        \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n        \"updatedAt\": \"2023-06-24T17:51:03.840Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "Get appointments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/appointment?date=2023-07-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"appointment"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-07-03"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get appointments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/appointment?date=2023-07-03",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"appointment"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2023-07-03"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7fc-2PQJZf/RQUJHrWxo/e+ZPWZrc0A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Jun 2023 19:54:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully returned list of appointments\",\n    \"results\": [\n        {\n            \"_id\": \"6480e069f26815622afeca21\",\n            \"startTimeAndDate\": \"2023-07-03T06:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-07T19:54:17.049Z\",\n            \"updatedAt\": \"2023-06-07T19:54:17.049Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6480e069f26815622afeca24\",\n            \"startTimeAndDate\": \"2023-07-03T09:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T10:00:00.000Z\",\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-07T19:54:17.049Z\",\n            \"updatedAt\": \"2023-06-07T19:54:17.049Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6480e069f26815622afeca28\",\n            \"startTimeAndDate\": \"2023-07-03T13:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T14:00:00.000Z\",\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-07T19:54:17.049Z\",\n            \"updatedAt\": \"2023-06-07T19:54:17.049Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6480e069f26815622afeca23\",\n            \"startTimeAndDate\": \"2023-07-03T08:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T09:00:00.000Z\",\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-07T19:54:17.049Z\",\n            \"updatedAt\": \"2023-06-07T19:54:17.049Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6480e069f26815622afeca26\",\n            \"startTimeAndDate\": \"2023-07-03T11:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T12:00:00.000Z\",\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-07T19:54:17.049Z\",\n            \"updatedAt\": \"2023-06-07T19:54:17.049Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6480e069f26815622afeca25\",\n            \"startTimeAndDate\": \"2023-07-03T10:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T11:00:00.000Z\",\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-07T19:54:17.049Z\",\n            \"updatedAt\": \"2023-06-07T19:54:17.049Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6480e069f26815622afeca22\",\n            \"startTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T08:00:00.000Z\",\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-07T19:54:17.049Z\",\n            \"updatedAt\": \"2023-06-07T19:54:17.049Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6480e069f26815622afeca27\",\n            \"startTimeAndDate\": \"2023-07-03T12:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T13:00:00.000Z\",\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-07T19:54:17.049Z\",\n            \"updatedAt\": \"2023-06-07T19:54:17.049Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get appointments for last 6 months",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/appointment/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"appointment",
+								"recent"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get appointments for last 6 months",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/appointment/recent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"appointment",
+										"recent"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "607"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25f-jEOqJdRjD9UqGG57u7zsCAf3g6A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Jun 2023 09:50:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully returned list of appointments for last 6 months\",\n    \"results\": [\n        {\n            \"_id\": \"6496ba401dc7dd74c342e74e\",\n            \"startTimeAndDate\": \"2023-06-12T12:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-06-12T13:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-24T09:41:20.517Z\",\n            \"updatedAt\": \"2023-06-24T09:41:20.517Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update appointment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\":\"Test\",\n    \"status\":\"Pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/appointment/6484a1f1c9327aae3f5040d4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"appointment",
+								"6484a1f1c9327aae3f5040d4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update appointment",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\":\"Test\",\n    \"status\":\"Pending\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/appointment/6484a1f1c9327aae3f5040d4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"appointment",
+										"6484a1f1c9327aae3f5040d4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14e-bd2KHEflpueBXHLxPJytOSSCtR0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jun 2023 16:21:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully updated appointment\",\n    \"results\": {\n        \"_id\": \"6484a1f1c9327aae3f5040d4\",\n        \"startTimeAndDate\": \"2023-07-03T09:00:00.000Z\",\n        \"endTimeAndDate\": \"2023-07-03T10:00:00.000Z\",\n        \"user\": \"646a2ab464e4bcd08f673fd4\",\n        \"type\": \"Test\",\n        \"status\": \"Pending\",\n        \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n        \"updatedAt\": \"2023-06-10T16:21:58.685Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get appointments for user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/appointment/user?date=2023-07-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"appointment",
+								"user"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-07-03"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get appointments for user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/appointment/user?date=2023-07-03",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"appointment",
+										"user"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2023-07-03"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "902"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"386-KCGwp0XeZU0S4Lx+IpEk3MXnu0g\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 21:16:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully returned list of appointments\",\n    \"results\": [\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d1\",\n            \"startTimeAndDate\": \"2023-07-03T06:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"user\": \"646a2ab464e4bcd08f673fd4\",\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:18:06.543Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d4\",\n            \"startTimeAndDate\": \"2023-07-03T09:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T10:00:00.000Z\",\n            \"user\": \"646a2ab464e4bcd08f673fd4\",\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:24:58.543Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d2\",\n            \"startTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T08:00:00.000Z\",\n            \"user\": \"646a2ab464e4bcd08f673fd4\",\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:18:24.067Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get appointments for user by role",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/appointment/user/role?date=2023-07-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"appointment",
+								"user",
+								"role"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-07-03"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get appointments for user by role user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/appointment/user/role?date=2023-07-03",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"appointment",
+										"user",
+										"role"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2023-07-03"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"656-HvlVtYFb5CGDm6MsiMTYc0rOWcQ\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 14 Jun 2023 17:49:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully returned list of appointments\",\n    \"results\": [\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d1\",\n            \"startTimeAndDate\": \"2023-07-03T06:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:18:06.543Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d4\",\n            \"startTimeAndDate\": \"2023-07-03T09:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T10:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:24:58.543Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d2\",\n            \"startTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T08:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:18:24.067Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get appointments for user by role doctor",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/appointment/user/role?date=2023-07-03",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"appointment",
+										"user",
+										"role"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2023-07-03"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c68-PncxfzyhJNphiMs28W8tm3AkIxE\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 14 Jun 2023 17:50:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully returned list of appointments\",\n    \"results\": [\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d1\",\n            \"startTimeAndDate\": \"2023-07-03T06:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:18:06.543Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d3\",\n            \"startTimeAndDate\": \"2023-07-03T08:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T09:00:00.000Z\",\n            \"user\": null,\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:16:49.907Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d4\",\n            \"startTimeAndDate\": \"2023-07-03T09:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T10:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:24:58.543Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d5\",\n            \"startTimeAndDate\": \"2023-07-03T10:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T11:00:00.000Z\",\n            \"user\": null,\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:16:49.907Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d6\",\n            \"startTimeAndDate\": \"2023-07-03T11:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T12:00:00.000Z\",\n            \"user\": null,\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:16:49.907Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d8\",\n            \"startTimeAndDate\": \"2023-07-03T13:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T14:00:00.000Z\",\n            \"user\": null,\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:16:49.907Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d9\",\n            \"startTimeAndDate\": \"2023-07-03T14:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T15:00:00.000Z\",\n            \"user\": null,\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:16:49.907Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d2\",\n            \"startTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T08:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:18:24.067Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d7\",\n            \"startTimeAndDate\": \"2023-07-03T12:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T13:00:00.000Z\",\n            \"user\": null,\n            \"type\": \"DentalExam\",\n            \"status\": \"Free\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:16:49.907Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Upcoming appointments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/appointment/upcoming",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"appointment",
+								"upcoming"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/appointment/upcoming",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"appointment",
+										"upcoming"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ea4-KwVB45wIPXF+Hi5Eb1iHIzci6Wc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Jun 2023 12:00:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully returned list of upcoming appointments\",\n    \"results\": [\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d1\",\n            \"startTimeAndDate\": \"2023-07-03T06:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Done\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-22T16:40:45.452Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d4\",\n            \"startTimeAndDate\": \"2023-07-03T09:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T10:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:24:58.543Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f5040d2\",\n            \"startTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-03T08:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n            \"updatedAt\": \"2023-06-10T16:18:24.067Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f504111\",\n            \"startTimeAndDate\": \"2023-07-12T07:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-12T08:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.908Z\",\n            \"updatedAt\": \"2023-06-11T06:45:08.565Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f504112\",\n            \"startTimeAndDate\": \"2023-07-12T08:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-12T09:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.908Z\",\n            \"updatedAt\": \"2023-06-11T06:45:13.884Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f504115\",\n            \"startTimeAndDate\": \"2023-07-12T11:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-12T12:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.908Z\",\n            \"updatedAt\": \"2023-06-11T06:51:55.237Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f50410b\",\n            \"startTimeAndDate\": \"2023-07-11T10:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-11T11:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.908Z\",\n            \"updatedAt\": \"2023-06-11T06:52:04.948Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f50411e\",\n            \"startTimeAndDate\": \"2023-07-13T11:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-13T12:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.908Z\",\n            \"updatedAt\": \"2023-06-10T17:51:06.630Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f504136\",\n            \"startTimeAndDate\": \"2023-07-18T08:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-18T09:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.908Z\",\n            \"updatedAt\": \"2023-06-23T09:48:31.003Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f504134\",\n            \"startTimeAndDate\": \"2023-07-18T06:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-18T07:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.908Z\",\n            \"updatedAt\": \"2023-06-11T06:52:37.417Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6484a1f1c9327aae3f504140\",\n            \"startTimeAndDate\": \"2023-07-19T09:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-07-19T10:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-10T16:16:49.908Z\",\n            \"updatedAt\": \"2023-06-11T06:34:41.376Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6496ba401dc7dd74c342e7bd\",\n            \"startTimeAndDate\": \"2023-06-29T06:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-06-29T07:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-24T09:41:20.518Z\",\n            \"updatedAt\": \"2023-06-24T09:42:17.319Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6496ba401dc7dd74c342e7c0\",\n            \"startTimeAndDate\": \"2023-06-29T09:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-06-29T10:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-24T09:41:20.518Z\",\n            \"updatedAt\": \"2023-06-24T09:42:18.470Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6496ba401dc7dd74c342e7c2\",\n            \"startTimeAndDate\": \"2023-06-29T11:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-06-29T12:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-24T09:41:20.518Z\",\n            \"updatedAt\": \"2023-06-24T09:42:17.940Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6496ba401dc7dd74c342e7ca\",\n            \"startTimeAndDate\": \"2023-06-30T10:00:00.000Z\",\n            \"endTimeAndDate\": \"2023-06-30T11:00:00.000Z\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"type\": \"Test\",\n            \"status\": \"Pending\",\n            \"createdAt\": \"2023-06-24T09:41:20.518Z\",\n            \"updatedAt\": \"2023-06-24T09:42:20.381Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Prescription",
+			"item": [
+				{
+					"name": "Create Prescription for user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\":\"646a2ab464e4bcd08f673fd4\",\n    \"description\":\"Test test test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/prescription",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"prescription"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Prescription for patient",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\":\"646a2ab464e4bcd08f673fd4\",\n    \"description\":\"Test test test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/prescription",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"prescription"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-lqJLuL3XlJEDjMSFmTUQ5bTj+uo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Jun 2023 20:01:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully created prescription\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update appointment status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\":\"Done\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/appointment/status/6484a1f1c9327aae3f5040d1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"appointment",
+								"status",
+								"6484a1f1c9327aae3f5040d1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Prescription for user Copy",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\":\"Done\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/appointment/status/6484a1f1c9327aae3f5040d1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"appointment",
+										"status",
+										"6484a1f1c9327aae3f5040d1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "331"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14b-e3VOvnmLXPfaCvL4vSKi132YjaM\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Jun 2023 16:40:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully updated appointment\",\n    \"results\": {\n        \"_id\": \"6484a1f1c9327aae3f5040d1\",\n        \"startTimeAndDate\": \"2023-07-03T06:00:00.000Z\",\n        \"endTimeAndDate\": \"2023-07-03T07:00:00.000Z\",\n        \"user\": \"646a2ab464e4bcd08f673fd4\",\n        \"type\": \"Test\",\n        \"status\": \"Done\",\n        \"createdAt\": \"2023-06-10T16:16:49.907Z\",\n        \"updatedAt\": \"2023-06-22T16:40:45.452Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Prescription for patient when doctor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/prescription?user=646a2ab464e4bcd08f673fd4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"prescription"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "646a2ab464e4bcd08f673fd4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/prescription?user=646a2ab464e4bcd08f673fd4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"prescription"
+									],
+									"query": [
+										{
+											"key": "user",
+											"value": "646a2ab464e4bcd08f673fd4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "488"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e8-CPhGu3tKZK0oLNifiVndiEkPmjk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Jun 2023 20:02:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully retrieved prescriptions\",\n    \"results\": [\n        {\n            \"_id\": \"64935701b0e75f9317d60472\",\n            \"description\": \"Test test test\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"createdAt\": \"2023-06-21T20:01:05.453Z\",\n            \"updatedAt\": \"2023-06-21T20:01:05.453Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Prescription for user when role patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8009/api/v1/prescription",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"prescription"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Prescription for patient when doctor Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8009/api/v1/prescription",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"prescription"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "488"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e8-CPhGu3tKZK0oLNifiVndiEkPmjk\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Jun 2023 20:03:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully retrieved prescriptions\",\n    \"results\": [\n        {\n            \"_id\": \"64935701b0e75f9317d60472\",\n            \"description\": \"Test test test\",\n            \"user\": {\n                \"_id\": \"646a2ab464e4bcd08f673fd4\",\n                \"name\": \"Alen Mujanovic1\",\n                \"email\": \"test@gmail.com\",\n                \"isActive\": true,\n                \"phone\": \"381611111122\",\n                \"gender\": \"Male\",\n                \"address\": \"test adresa\",\n                \"role\": \"Patient\",\n                \"createdAt\": \"2023-05-21T14:29:08.765Z\",\n                \"updatedAt\": \"2023-05-21T15:12:17.254Z\",\n                \"__v\": 0\n            },\n            \"createdAt\": \"2023-06-21T20:01:05.453Z\",\n            \"updatedAt\": \"2023-06-21T20:01:05.453Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ContactUs",
+			"item": [
+				{
+					"name": "Contact Us",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Test\",\n    \"description\":\"Test descr\",\n    \"email\":\"testContact@test.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8009/api/v1/contact",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8009",
+							"path": [
+								"api",
+								"v1",
+								"contact"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Test\",\n    \"description\":\"Test descr\",\n    \"email\":\"testContact@test.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8009/api/v1/contact",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8009",
+									"path": [
+										"api",
+										"v1",
+										"contact"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-a+3Q/d3V5CsLSMY20k3bOgfFahQ\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 Jun 2023 10:06:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully contacted us\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc3OGVjNjRkZWJiM2JmMGIyNzdiZGEiLCJpYXQiOjE2ODc2NDAwMDcsImV4cCI6MTY4NzY4MzIwN30.P-09RfkRcaYVjnaaCXofH7pvFwU5CKByUoElbXWGS-E",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
