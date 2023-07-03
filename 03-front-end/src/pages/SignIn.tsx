@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { SessionService } from '../services';
 import { authStore } from '../stores/authStore';
 import { useSignIn } from '../hooks';
 import { toast } from 'react-toastify';
-import { Button, Input, LoadingSpinner, Navbar } from '../components';
+import { Button, Input, LoadingSpinner, Modal, Navbar } from '../components';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 const SignIn = () => {
   const navigate = useNavigate();
   const setSession = useSetRecoilState(authStore);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
 
   const { mutate: loginUser, isLoading } = useSignIn();
 
@@ -158,6 +159,21 @@ const SignIn = () => {
           </div>
         </div>
       </main>
+      <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)} title="Accounts you can use to sign in">
+        <div className="flex justify-center flex-col text-center">
+          <div className="mb-5">
+            <h3 className="text-lg font-bold ">Dentist account</h3>
+            <p>test@test.com</p>
+            <p>test1234</p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-bold">Patient account</h3>
+            <p>test@gmail.com</p>
+            <p>test1234</p>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };

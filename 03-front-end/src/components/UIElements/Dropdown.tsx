@@ -29,7 +29,7 @@ const Dropdown = ({ handleSignOut }: DropdownProps) => {
   return (
     <div className={`relative inline-block text-left dropdown-container mx-5 ${dropdownOpen ? 'open' : ''}`}>
       <button onClick={toggleDropdown} className="flex items-center  text-base font-semibold text-white rounded-full">
-        <img src={userProfile} className="w-10"></img>
+        <img src={userProfile} className="w-[2.3rem]"></img>
       </button>
       <div
         className={`absolute left-0 z-40 mt-2 rounded border-[.5px] border-light bg-white p-5 shadow-card transition-all ${
