@@ -13,6 +13,7 @@ const ErrorHandler = require('./middlewares/errorHandling/errorHandler');
 const mongoDB = require('./config/database/mongodb/connection');
 const environments = require('./config/environments');
 const { name } = require('./package.json');
+const { rateLimiter } = require('./middlewares/rateLimiter');
 
 const port = environments.PORT;
 const appURL = `http://localhost:${port}/api/v1/`;
@@ -32,6 +33,7 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression());
 app.use(mongoSanitize());
+app.use(rateLimiter);
 
 app.disable('x-powered-by');
 
@@ -51,7 +53,7 @@ app.use(
       '/api/v1/contact',
       /\/apidoc\/?/,
     ],
-  })
+  }),
 );
 
 mongoose.set('strictQuery', false);
